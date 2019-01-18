@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    {{>include/head}}
+    </head>
+	<body>
+        <div class="wrap">
+        	{{>include/gnb}}
+        <div class="boxes">
+            <a href="" class="edit_btn">신규등록 및 수정</a>
+            <div class="long mb0"><h2>고객목록</h2></div>
+            <table class="table01 edit">
+                <thead>
+                    <tr>
+                        <th>아이디</th>
+                        <th>이름</th>
+                        <th>역할명</th>
+                        <th>소속</th>
+                        <th>연락처(HP)</th>
+                        <th>연락처(T)</th>
+                        <th>이메일</th>
+                        <th>SMS여부</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{#each dataList}}
+					<tr onclick="view_show(2,'edit',this); return false;" style="cursor:pointer">
+						<td style="display:none">{{id}}</td>
+						<td>{{userid}}</td>
+						<td>{{username}}</td>
+						<td>{{userrole}}</td>
+						<td>{{userpart}}</td>
+						<td>{{userhp}}</td>
+						<td>{{usertel}}</td>
+						<td>{{useremail}}</td>
+						<td>{{usersms}}</td>
+					</tr>
+				{{/each}}	
+				{{#eqLong totlalCount 0}}
+					<tr>
+						<td colspan="8">등록/검색된 결과가 없습니다.</td>
+					</tr>
+				{{/eqLong}}		
+                </tbody>
+            </table>
+        </div><!-- boxes end-->
+    </div><!-- wrap end-->
+</body>
+</html>

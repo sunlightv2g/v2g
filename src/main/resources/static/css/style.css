@@ -1,0 +1,278 @@
+﻿@charset "utf-8";
+@import url('reset.css');
+
+html {margin:0; padding:0; overflow-x:hidden;}
+body {background:#000;width:100%; margin:0; padding:0; font-family:'Malgun Gothic', 'Nanum Gothic', sans-serif; font-size:14px; color:#333; text-size-adjust: none; -webkit-text-size-adjust: none; -webkit-font-smoothing: antialiased; word-wrap: break-word;}
+input,button {margin:0; padding:0; font-family:'Malgun Gothic', 'Nanum Gothic', sans-serif; background:#fff; border:1px solid #757575}
+input[type=text] {min-width:120px; height:32px; line-height:32px; font-size:16px; border:1px solid #757575; color:#666; padding:0 5px;}
+input::placeholder {color:#fff}
+button {text-align:center; vertical-align: middle; cursor:pointer}
+select {min-width:102px; height:42px; padding:0 10px; font-size: 18px;color: #fff; border: 1px solid #4b494b;  border-radius: 5px;  -webkit-appearance: none; -moz-appearance: none; appearance: none; background: url('../img/select_arrow.png') no-repeat 90% 50% #000; font-weight:600; }
+select::-ms-expand { display: none;}
+h1,h2,h3,h4,h5,h6,p {font-weight:normal; padding:0; margin:0;}
+ul,ol,dl,li,dl,dt,dd {list-style:none; margin:0; padding:0;}
+form, fieldset {margin:0; padding:0; border:0}
+caption, legend {display:none}
+
+a {color:#333; text-decoration:none; outline: 0;}
+address {font-style:normal;}
+img {line-height:0; font-size:0; border:0; max-width:100%; -ms-interpolation-mode:bicubic}
+.clearfix {clear:both; *zoom:1; overflow:hidden; }
+.wrap {width:1280px; margin:0 auto; position:relative; background:url(../img/bg.png) no-repeat 0 0 #080707; min-height:900px; height:100%;}
+.wrap::after {clear:both; display: block; content: ""}
+.fl {float:left; !important}
+.fr {float:right !important}
+
+.top {position: relative; height:78px;}
+.top h1 {position: absolute; top:10px; left:485px; width:400px; height:50px; text-indent: -9999px}
+.top h1 > a {display:block; width:100%; height:50px;}
+.top > ul {float:right; margin-right:13px; margin-top:24px;}
+.top > ul li {float:left;}
+.top > ul li a {display:block; width:80px; height:22px; color:#fff; font-size:14px; text-align: center; }
+.top > ul li:last-child {width:74px; height:24px; line-height: 24px; background:#0070cc; border:0;}
+.top > ul li input {display:block; height:22px; color:#000; font-size:12px; line-height:15px}
+
+.options {position: relative; height:55px; margin-bottom: 7px; clear:both;}
+.inputs {float:left; margin-top:9px}
+.inputs li {float:left; margin-left:7px;}
+.inputs li input.black {height:40px; padding:0 10px; font-size: 18px; color: #fff; border: 1px solid #4b494b;  border-radius: 5px; background:#000; font-weight:600; text-align: center; width:170px}
+.inputs li > button {width:85px; height:42px; background: #0e4a74; color:#fff; font-size:18px; border:0; border-radius: 5px; font-weight: 600}
+
+.buttons {float:right; margin:9px 7px 0 0; font-family: 'Nanum Gothic'}
+.buttons li {float:left; margin-left:5px; background: url(../img/btn_bg_off.png) no-repeat; width:140px; height:42px;}
+.buttons li a {display: block; height:42px; line-height: 42px; text-align: center; color:#fff; font-size:17px; font-weight:600; letter-spacing: 0.5px;}
+.buttons li:hover { background: url(../img/btn_bg_on.png) no-repeat;}
+
+h2 {font-size:20px; color:#fff; font-weight: 600;  height:48px; line-height: 48px; padding-left:55px; background:url(../img/icon01.png) no-repeat 20px center}
+h2 > span {font-weight: 400; margin-left:5px; font-size:18px}
+.status {position: relative; clear:both; margin:0 10px; height:150px}
+.status > h2 {float:left;} 
+.status > p {float:right; font-size: 14px; font-weight: 600; color:#fff; letter-spacing: 0.5px; margin-top:8px;}
+.status > p .time {font-family: 'Nanum Gothic'; display:inline-block; width:200px; height:30px; background:#000; border:1px solid #5a5a5a; text-align: center; line-height:30px; margin: 0 7px; border-radius: 5px}
+.status ul {clear:both; position: inherit}
+.status ul li {float:left; width:210px; font-size:19px; font-weight: 600; color:#fff; margin-top:20px; text-align: center;}
+.status ul li .num_five {display:inline-block; width:119px; padding:0 8px 2px 8px; height:38px; line-height: 36px; background:url(../img/status_5.png) no-repeat 0 0; text-align: right; font-size:36px; color:#33ccff; font-weight: 600; margin-right:5px;}
+.status ul li .num_four {display:inline-block; width:106px; padding:0 8px 2px 8px; height:38px; line-height: 36px; background:url(../img/status_4.png) no-repeat 0 0; text-align: right; font-size:36px; color:#33ccff; font-weight: 600; margin-right:5px;}
+.status ul li .num_three {display:inline-block; width:79px; padding:0 8px 2px 8px; height:38px; line-height: 36px; background:url(../img/status_3.png) no-repeat 0 0; text-align: right; font-size:36px; color:#33ccff; font-weight: 600; margin-right:5px;}
+.skyblue {display:block; font-size:14px; color:#66ccff; font-weight: 600; margin-top:5px;}
+.status ul li:first-child {width:216px}
+.status ul li:nth-child(3) {width:218px}
+.status ul li:nth-child(4) {width:210px} 
+.status ul li:nth-child(5) {width:204px}
+.status ul li:last-child {width:200px}
+
+.boxes {clear:both; width:1260px; margin:10px; position: relative}
+.boxes::after {clear:both; display: block; content: ""}
+.left { float:left; width:343px; height:100%;}
+.right {float:right; margin-right:0; width:343px; height:100%;}
+.region {width:100%; background:url(../img/box_bg.png) no-repeat 0 0; height:135px; margin-bottom:20px;}
+.region ul li {float:left; font-size:12px; color:#fff; font-weight:600; width:32%; margin-top:15px; text-align:center;}
+.region ul li:last-child {width:36%}
+.region ul li .num_yellow  {display:inline-block; width:55px; padding:0 8px; height:32px; line-height: 32px; background:url(../img/region_bg.png) no-repeat 0 0; text-align: right; font-size:18px; color:#ffff00; font-weight: 600; margin-right:5px;}
+.region ul li:last-child .num_yellow {letter-spacing:-0.5px}
+
+.center {float:left; margin-left:6px;}
+.map {background:url(../img/map_bg.png) no-repeat 0 0; width:563px; height:568px}
+.map h2 {background:url(../img/icon02.png) no-repeat 18px center; padding-left:60px}
+.map01 {margin:20px;}
+.map01 li {float:left; font-size:14px; color:#fff; font-weight:600}
+.map01 li:last-child {float:right;}
+.map01 li .num_orange  {display:inline-block; width:126px; padding:0 8px; height:39px; line-height: 39px; background:url(../img/region_big.png) no-repeat 0 0; text-align: right; font-size:28px; color:#ff9900; font-weight: 600; margin-right:5px;}
+.map01::after {clear:both; display: block; content: ""}
+
+.map02, .map03 {position: relative; float:left; margin:0 20px;}
+.map03 {float:right; margin-right:22px}
+.map02 li, .map03 li {float:none; width:95px; height:51px; margin-bottom:10px; font-size:14px; color:#fff; letter-spacing: 0.5px}
+.areaname {display:block; color:#fff; font-size:13px; font-family: 'Nanum Gothic'; font-weight: 600; text-align: center; padding-top:7px;}
+.area_yellow {display: inline-block; color:#ffff00; font-size: 14px; height:20px; line-height: 18px; font-weight: 600; margin:0px 5px; width:48px; padding:0 8px; text-align: right;}
+
+.time {clear:both; margin-top:12px;position:relative; background:url(../img/time_bg.png) no-repeat 0 0; width:563px; height:173px}
+.time h2 {background:url(../img/icon03.png) no-repeat 18px center; padding-left:60px}
+.time div {margin:2px; text-align: center; height:110px; color:#fff;}
+
+
+/*지역(강남구)*/
+.long {width:100%; background:url(../img/long_title.png) no-repeat 0 0; width:100%; height:50px; margin:15px 0}
+.area_sec {float:left; margin-right:27px}
+.area_sec.last {margin-right:0}
+.area_sec .region {width:230px; height:125px; background:url(../img/area_bg.png) no-repeat 0 0; margin-bottom:18px}
+h3 {font-size:14px; color:#fff; font-weight: 600; text-align: center; height:45px; line-height: 45px; }
+h3 span {font-size:12px; font-weight: 400; margin-left:5px}
+.area_sec .region ul {margin:0 10px}
+.area_sec .region ul li {float:left; font-size:12px; color:#fff; font-weight:400; width:70px; margin-top:7px; text-align:center;}
+.area_sec .region ul li .num_yellow  {display:inline-block; width:48px; padding:0 8px; height:26px; line-height:26px; background:url(../img/area_text_bg.png) no-repeat 0 0; text-align: right; font-size:14px; color:#ffff00; font-weight: 600; margin:2px}
+.area_sec .region ul li .skyblue {font-size:12px; font-weight: 400; margin-top:0px}
+.area_sec .region ul li:first-child .num_yellow {text-align: center}
+
+/*서울특별시*/
+.area_sec.float {margin-right:0; width:100%}
+.float .region {float:left; margin-right:27px}
+.float .region.nomargin, .area_sec.nomargin {margin-right:0;}
+.seoul h3 {font-size:18px; text-align: left; padding-left:18px}
+.seoul h3 span {font-size:14px;}
+
+.seoul_map {float:left; margin-right:27px}
+
+/*전력거래*/
+.half {float:left; position:relative; width:614px; height:643px; background:url(../img/half_bg.png) no-repeat 0 0 #2b2b2c; margin:20px 0; }
+.deal {margin:20px 50px;}
+.deal li {margin-bottom:10px; font-size:14px; color:#fff; font-weight:600; height:40px; line-height: 40px}
+.deal li .deal_t {display:inline-block; float:left; font-size:18px;  height:40px; line-height:40px; margin-right:20px}
+.deal li .num_yellow  {display:inline-block; width:135px; padding:0 10px; height:40px; line-height:40px; background:url(../img/half_text_bg.png) no-repeat 0 0; text-align: right; font-size:28px; color:#ffcc00; font-weight: 600; margin-right:10px;}
+.m20 {margin-left:50px;}
+
+.deals {clear:both; width:403px; padding:15px 105px 0 100px;  border-top:1px solid #525252; margin-left:3px}
+.deals::after {clear:both; display: block; content:""}
+.deals li{float:left; width:178px; border-radius:5px; background:#212121; height: 52px; margin:5px 10px; }
+.deal_t2 {display: inline-block; background: #000; color:#fff; font-size:14px; font-weight: 600; line-height: 16px; width:22px; padding:10px; height:52px; height:32px; border-radius: 5px 0 0 5px; text-align: center; float:left;}
+.deals .num_yellow, .deals2 .num_yellow {font-size:18px; font-weight:600; color:#ffcc00; display:inline-block; float:left; text-align: right; width:126px; line-height:18px; padding-top:6px; padding-right:10px;}
+.deals .num_yellow b, .deals2 .num_yellow b  {font-size:14px; color:#fff; margin-left:5px;}
+
+.deals2 {clear:both; width:600px; margin:0 auto; }
+.deals2::after {clear:both; display: block; content:""}
+.deals2 li{float:left; width:178px; border-radius:5px; background:#212121; height: 52px; margin:5px 5px 5px 15px; }
+
+.deal_arrow {width:570px; margin:0 auto}
+.deal_arrow > li {float:left; text-align: center}
+.deal_arrow li:first-child {border:1px solid #fff; padding:5px 12px; margin-right:65px; width:85px;}
+.deal_arrow li span {color:#fff; display: block; font-size:14px; height:24px; line-height: 24px;}
+.deal_arrow li span img {vertical-align: middle; margin-right:5px;}
+
+.dr {position:relative; padding-top:25px}
+.dr li {position:relative;}
+.dr li .pink {position:absolute; top:-16px; left:75px; color:#ff9999; font-size:11px; font-weight: 400}
+.side, .nobo {border-top:0;}
+.nobo {padding-top:0;}
+.side {width:605px; margin:0 auto; padding:15px 0 0 0; background:url(../img/dr_bg.png) no-repeat center}
+.side li {margin-bottom:15px}
+.side li:nth-child(even) {float:right;}
+.side li:nth-child(3), .side li:nth-child(5) {clear:both;} 
+
+.deal_arrow.dr {width:135px; padding-top:10px}
+.deal_arrow.dr li {width:110px}
+
+/*예약화면*/
+.half.book {height:380px; padding:0;}
+.book > div {text-align: center; font-size:14px; color:#fff; height:320px; padding:5px}
+
+.recent {float:left; position:relative; background:url(../img/book_bg.png) no-repeat 0 0; width:613px; height:282px; margin-bottom:20px}
+.recent ul {padding:20px 30px;}
+.recent ul li {float:left; font-size:18px; font-weight:600; color:#fff; height:40px; line-height:40px; margin-bottom:10px}
+.recent_t {float:left; height:40px; line-height: 40px; width:80px; font-family: 'Nanum Gothic'}
+.recent ul li span.text01 {display:inline-block; width:428px;height:40px; line-height: 40px; background: url(../img/book_txt01.png) no-repeat 0 0; margin-left:20px; padding:0 10px; color:#ffcc00; font-size:24px;}
+.recent ul li span.text02 {display:inline-block; width:133px;height:40px; line-height: 40px; background: url(../img/book_txt02.png) no-repeat 0 0; margin-left:20px; padding:0 10px; color:#ffcc00; font-size:24px; text-align: right}
+.ml20 {margin-left:40px;}
+.recent ul li span.text02.small {font-size:18px; font-weight: 400}
+.recent ul li span.text02.green {color:#02ee87}
+
+/*통계분석*/
+.stats {height:100%;}
+.stats > div {padding:5px 0;}
+
+/*아파트*/
+.boxes .apt {width:1220px; margin:0 auto; position: relative;}
+.colors {position: relative; float:left; margin-top:10px;}
+.colors li {float:left; color:#fff; font-weight: 600; padding-right:20px;}
+.color {width:12px; height:25px; border:2px solid #666666; display: inline-block; margin-right:8px; border-radius: 3px; float: left;}
+.colors li .about {float:left; padding-top:7px; line-height: 16px;}
+.colors li:first-child .color, .color.skyblue {background:#0099ff}
+.colors li:nth-child(2) .color, .color.gray {background:#cccccc}
+.colors li:nth-child(3) .color, .color.purple {background:#9900cc}
+.colors li:nth-child(4) .color, .color.red {background:#cc0000}
+.colors li:last-child .color, .color.black {background:#000}
+
+.sum {float:left; padding:10px 0 0 150px; width:512px; height:82px; background:url(../img/apt_arrow_bg.png) no-repeat 0 0; margin-left:30px;}
+.sum li {float:left; font-size:14px; font-weight: 600; color:#fff}
+.sum li span {color:#ffcc00; font-size:36px; margin:0 5px}
+
+.car {position: relative; float:left; margin-right:5px;}
+.car dl {position:relative; width:193px; height:126px; padding:5px 10px; background:#2d2d2d; border:1px solid #666666; margin-bottom:12px;}
+.car dl dt {background: url(../img/apt_car.png) no-repeat center 3px; font-size:14px; color:#fff; padding:52px 30px 0 30px}
+.car dl dt .dot {display:inline-block;  margin:4px; width:5px; height:5px; background: #fff; border-radius: 50%; }
+.car dl dd {font-size:14px; color:#000; padding:5px 9px; border-radius: 5px; line-height: 14px; height:14px;}
+.car dl dd.sky {position:absolute; bottom: 10px; left:15px; background: #33ccff}
+.car dl dd.yellow {position:absolute; bottom: 10px; right:15px; background: #ffcc33}
+
+.arrows {float:left;}
+.arrows li {width:120px; height:98px; padding-top:40px; position:relative; background:url(../img/apt_arrow.png) no-repeat 0 110px; margin-bottom:12px; font-size:14px; color:#fff; line-height:18px; text-align: center;}
+.arrows li > span {display:block; color:#ffcc00; font-weight:600; }
+.arrows li .color {position: absolute; right:0; bottom:4px; border-right:0; margin-right:0}
+
+.building {float:left; position:relative; width:245px; height:590px; border:1px solid #666; background:#2d2d2d; margin-right:46px}
+.building h4 {height:55px; line-height: 55px; background: #0066cc; color:#fff; font-weight: 600; font-size:18px; text-align: center}
+.building .bd {margin:45px 25px 60px 25px;}
+.building .bd li {font-size:14px; font-weight: 600; color:#fff; margin-bottom:20px;}
+.building .bd li .num {display: inline-block; background: url(../img/book_txt02.png) no-repeat 0 0; width:133px; height:39px; line-height:39px; margin-right:10px; font-size:24px; padding:0 10px; text-align: right;}
+.building.fr {margin-right:0}
+
+.battery {width:164px; margin:0 auto; position: relative}
+.battery .top_cell {background:#336600; width:32px; height:12px; margin-left:68px; margin-top:0;}
+.battery ul li {height:32px; background: #cccccc; margin-bottom: 1px; text-indent: -9999px}
+.battery ul li.on {background:#66ff00}
+.battery > p {color:#66ff00; font-size:36px; font-weight: 600; line-height: 26px; text-align: center; margin-top:30px;}
+.battery > p > span {display:block; font-size:18px;}
+
+/*고객기준, 환경설정*/
+.mb0 {margin-bottom:0; clear:both;}
+.edit_btn {float:right; width:145px; height:35px; line-height: 35px; display: block; font-size:16px; color:#fff; font-weight: 600; background:#0e4a74; text-align: center; border-radius: 5px; margin:10px 0 5px 0}
+.table01 {width:100%; border-collapse: collapse; margin:0; padding:0; height:120px; margin-top:-7px; display: block;}
+.table01 thead tr th {background:url(../img/table_bg.png) no-repeat 0 0 #4b4a4b; font-weight: 600; color:#fff; text-align: center; height:38px; font-size:16px; border-right:1px solid #646464}
+.table01 thead tr th:last-child {border-right:0}
+.table01 tbody {display:block; overflow-y:scroll; height:200px;}
+.table01 tbody tr td {background:#4b4a4b; font-weight: 400; color:#fff; text-align: center; height:38px; font-size:16px; background:#1b1c1d;border-right: 1px solid #646464; font-family: 'Gulim'}
+.table01 tbody tr td:last-child {border-right:0}
+.table01 tbody tr:nth-child(even) td {background:#27282a}
+.table01 th:nth-of-type(1), .table01 td:nth-of-type(1) { width:94px; }
+.table01 th:nth-of-type(2), .table01 td:nth-of-type(2) { width: 120px; }
+.table01 th:nth-of-type(3), .table01 td:nth-of-type(3) { width: 190px; }
+.table01 th:nth-of-type(4), .table01 td:nth-of-type(4) { width: 130px; }
+.table01 th:nth-of-type(5), .table01 td:nth-of-type(5) { width: 130px; }
+.table01 th:nth-of-type(6), .table01 td:nth-of-type(6) { width: 110px; }
+.table01 th:nth-of-type(7), .table01 td:nth-of-type(7) { width: 180px; }
+.table01 th:nth-of-type(8), .table01 td:nth-of-type(8) { width: 180px; }
+.table01 th:last-child { width:100px; }
+.table01 td:last-child { width: calc( 100px - 18px );  }
+
+.edit th:nth-of-type(1), .edit td:nth-of-type(1) { width:150px; }
+.edit th:nth-of-type(2), .edit td:nth-of-type(2) { width: 120px; }
+.edit th:nth-of-type(3), .edit td:nth-of-type(3) { width: 120px; }
+.edit th:nth-of-type(4), .edit td:nth-of-type(4) { width: 150px; }
+.edit th:nth-of-type(5), .edit td:nth-of-type(5) { width: 180px; }
+.edit th:nth-of-type(6), .edit td:nth-of-type(6) { width: 180px; }
+.edit th:nth-of-type(7), .edit td:nth-of-type(7) { width: 220px; }
+.edit th:last-child { width:117px; }
+.edit td:last-child { width: calc( 117px - 18px );  }
+
+.cheart_area03 {width:100%;position:relative;height:200px;overflow:hidden;margin-top:10px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

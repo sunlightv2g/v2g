@@ -1,0 +1,71 @@
+<div class="top">
+    <h1><a href="/">VEHECLE To GRID SYSTEM</a></h1>
+    <ul>
+    	{{#session}}
+    	<li><a href="#" onclick="logout(); return false;">로그아웃</a></li>
+    	{{else}} 
+    	<li><input type="text" id="loginid" maxlength="50" placeholder="ID"></li>
+	    <li><input type="password" id="loginpass" maxlength="50" placeholder="PW"></li>
+	    <li><a href="#" onclick="userlogin();return false;">로그인</a></li>
+	    
+	    {{/session}}
+	    
+    </ul>
+</div><!-- top end-->
+<div class="options">
+    <ul class="inputs">
+        <li>
+            <select>
+                <option>시/도</option>
+                <option>시/도</option>
+                <option>시/도</option>
+            </select>
+        </li>
+        <li>
+            <select>
+                <option>구/읍/면</option>
+                <option>구/읍/면</option>
+                <option>구/읍/면</option>
+            </select>
+        </li>
+        <li><input type="text" placeholder="공동주택명" class="black"></li>
+        <li><button type="button">선택</button></li>
+    </ul>
+    <ul class="buttons">
+        <li><a href="/customer">고객기준</a></li>
+        <li><a href="/trade">전력거래</a></li>
+        <li><a href="/analysis">V2G분석</a></li>
+        <li><a href="/reservation">예약화면</a></li>
+        <li><a href="/environment">환경설정</a></li>
+    </ul>
+</div><!-- options end-->
+<div class="status">
+<h2>전체현황</h2>
+<p>현재시간<span class="time">{{{weatherWrite}}}</span></p>
+<ul>
+    <li>
+        <span class="num_five">12,433</span>대
+        <span class="skyblue">차량 Total</span>
+    </li>
+    <li>
+        <span class="num_three">73</span>대
+        <span class="skyblue">금일 V2G Total</span>
+    </li>
+    <li>
+        <span class="num_four">7,266</span>kWh
+        <span class="skyblue">금일 V2G 전력량 Total</span>
+    </li>
+    <li>
+        <span class="num_four">5,266</span>kWh
+        <span class="skyblue">누적 V2G 전력량 Total</span>
+    </li>
+    <li>
+        <span class="num_five">55,433</span>kWh
+        <span class="skyblue">금일 V2G 금액 Total</span>
+    </li>
+    <li>
+        <span class="num_five">25,433</span>kWh
+        <span class="skyblue">누적 V2G 금액 Total</span>
+    </li>
+</ul>
+</div><!-- status end-->
