@@ -21,6 +21,12 @@ public class UtilHelper {
 		DecimalFormat df = new DecimalFormat("#,###");
 		return df.format(val);
 	}
+	
+	public String formatStringNumber(String val) {
+		int val2 = Integer.parseInt(val);  
+		DecimalFormat df = new DecimalFormat("#,###");
+		return df.format(val2);
+	}
 		
 	public String electric(String dbl1, double dbl2, double dbl3 ) {
 		double db = Double.valueOf(dbl1);

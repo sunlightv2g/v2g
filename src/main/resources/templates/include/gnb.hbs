@@ -44,28 +44,24 @@
 <p>현재시간<span class="time">{{{weatherWrite}}}</span></p>
 <ul>
     <li>
-        <span class="num_five">12,433</span>대
+        <span class="num_five">{{formatStringNumber centerdata.carcnt}}</span>대
         <span class="skyblue">차량 Total</span>
     </li>
     <li>
-        <span class="num_three">73</span>대
-        <span class="skyblue">금일 V2G Total</span>
+        <span class="num_five">{{formatStringNumber centerdata.vcar}}</span>대
+        <span class="skyblue">금일V2G차량 Total</span>
     </li>
     <li>
-        <span class="num_four">7,266</span>kWh
-        <span class="skyblue">금일 V2G 전력량 Total</span>
-    </li>
-    <li>
-        <span class="num_four">5,266</span>kWh
-        <span class="skyblue">누적 V2G 전력량 Total</span>
-    </li>
-    <li>
-        <span class="num_five">55,433</span>kWh
+        <span class="num_five">{{formatStringNumber centerdata.vcost}}</span>원
         <span class="skyblue">금일 V2G 금액 Total</span>
     </li>
     <li>
-        <span class="num_five">25,433</span>kWh
-        <span class="skyblue">누적 V2G 금액 Total</span>
+        <span class="num_five">{{formatStringNumber centerdata.velectric}}</span>kWh
+        <span class="skyblue">금일 V2G 전력량 Total </span>
+    </li>
+    <li>
+        <span class="num_five">{{formatStringNumber centerdata.vaccure}}</span>kWh
+        <span class="skyblue">누적 V2G 전력량 Total</span>
     </li>
 </ul>
 </div><!-- status end-->

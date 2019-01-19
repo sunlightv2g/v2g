@@ -1,5 +1,7 @@
 package com.v2g.webservice.web;
 
+import java.util.Calendar;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -8,9 +10,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.v2g.webservice.dto.customer.customer.CustomerMainCenterDataResponseDto;
+import com.v2g.webservice.dto.customer.customer.CustomerMainResponseDto;
+import com.v2g.webservice.dto.customer.customer.CustomerSearchRequestDto;
 import com.v2g.webservice.dto.environment.userinfo.UserinfoMainResponseDto;
 import com.v2g.webservice.dto.environment.userinfo.UserinfoSearchRequestDto;
+import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
+import com.v2g.webservice.service.customer.CustomerService;
 import com.v2g.webservice.service.environment.UserinfoService;
+import com.v2g.webservice.service.main.MaindataService;
 
 import lombok.AllArgsConstructor;
 
@@ -19,6 +27,8 @@ import lombok.AllArgsConstructor;
 public class WebController {
 
 	private UserinfoService userinfoService;
+	private CustomerService customerService;
+	private MaindataService maindataService;
 	
     @GetMapping("/")
     public String main(Model model) {
@@ -28,9 +38,11 @@ public class WebController {
     }
 	
     @GetMapping("/main")
-    public String mainMain(Model model) {
-    	//model.addAttribute("posts", postsService.findAllDesc());
-        //return "main";
+    public String mainMain(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+    	
+		CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
+		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
+    	
     	return "main/main";
     }
     
@@ -56,9 +68,16 @@ public class WebController {
     }
     
     @GetMapping("/customer")
-    public String customer(Model model) {
-    	//model.addAttribute("posts", postsService.findAllDesc());
-    	//return "main";
+    public String customer(Model model, CustomerSearchRequestDto customerSearchResponseDto, @PageableDefault(sort = { "id" }, direction = Direction.DESC, page=0, size = 10) Pageable pageable){
+    	Page<CustomerMainResponseDto> customerMainResponseDto = customerService.getCustomerListByQueryDSL(customerSearchResponseDto, pageable);
+		
+		model.addAttribute("search", customerSearchResponseDto);
+		model.addAttribute("dataList", customerMainResponseDto);
+		
+		model.addAttribute("currentPage", pageable.getPageNumber()+1);
+		model.addAttribute("countPerPageGroup",pageable.getPageSize());
+		model.addAttribute("totlalCount", customerMainResponseDto.getTotalElements());
+		model.addAttribute("totlalPageCount", customerMainResponseDto.getTotalPages());
     	return "customer/customer";
     }
     
