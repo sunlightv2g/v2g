@@ -100,9 +100,9 @@ public class WebController {
     }
     
     @GetMapping("/reservation")
-    public String reservation(Model model) {
-    	//model.addAttribute("posts", postsService.findAllDesc());
-    	//return "main";
+    public String reservation(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+   		CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
+   		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
     	return "reservation/reservation";
     }
     
