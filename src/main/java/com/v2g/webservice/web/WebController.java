@@ -68,7 +68,11 @@ public class WebController {
     }
     
     @GetMapping("/customer")
-    public String customer(Model model, CustomerSearchRequestDto customerSearchResponseDto, @PageableDefault(sort = { "id" }, direction = Direction.DESC, page=0, size = 10) Pageable pageable){
+    public String customer(Model model, MaindataSearchRequestDto maindataSearchRequestDto, CustomerSearchRequestDto customerSearchResponseDto, @PageableDefault(sort = { "id" }, direction = Direction.DESC, page=0, size = 10) Pageable pageable){
+    	
+   		CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
+   		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
+    	
     	Page<CustomerMainResponseDto> customerMainResponseDto = customerService.getCustomerListByQueryDSL(customerSearchResponseDto, pageable);
 		
 		model.addAttribute("search", customerSearchResponseDto);
@@ -103,8 +107,11 @@ public class WebController {
     }
     
     @GetMapping("/environment")
-    public String environment(Model model, UserinfoSearchRequestDto userinfoSearchResponseDto, @PageableDefault(sort = { "id" }, direction = Direction.DESC, page=0, size = 10) Pageable pageable){
-    	    	
+    public String environment(Model model, MaindataSearchRequestDto maindataSearchRequestDto, UserinfoSearchRequestDto userinfoSearchResponseDto, @PageableDefault(sort = { "id" }, direction = Direction.DESC, page=0, size = 10) Pageable pageable){
+    
+   		CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
+   		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
+   		
 		Page<UserinfoMainResponseDto> userinfoMainResponseDto = userinfoService.getUserinfoListByQueryDSL(userinfoSearchResponseDto, pageable);
 		
 		model.addAttribute("search", userinfoSearchResponseDto);
