@@ -101,8 +101,7 @@ public class WebController {
     
     @GetMapping("/reservation")
     public String reservation(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
-   		CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
-   		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
+
     	return "reservation/reservation";
     }
     
