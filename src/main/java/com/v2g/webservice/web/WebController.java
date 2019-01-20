@@ -100,8 +100,9 @@ public class WebController {
     }
     
     @GetMapping("/reservation")
-    public String reservation(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
-
+    public String reservation(Model model) {
+    	//model.addAttribute("posts", postsService.findAllDesc());
+    	//return "main";
     	return "reservation/reservation";
     }
     
