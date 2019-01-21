@@ -23,8 +23,8 @@ public class UtilHelper {
 	}
 	
 	public String formatStringNumber(String val) {
-		int val2 = Integer.parseInt(val);  
-		DecimalFormat df = new DecimalFormat("#,###");
+		double val2 = Double.parseDouble(val);  
+		DecimalFormat df = new DecimalFormat("#,###.#");
 		return df.format(val2);
 	}
 		

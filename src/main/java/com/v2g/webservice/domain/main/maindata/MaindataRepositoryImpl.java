@@ -54,9 +54,9 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
 //	    Query q = entityManager.createNativeQuery("SELECT a.firstname, a.lastname FROM Author a WHERE a.id = :id");
     	String query = "select "; 
 			query += " vcar ";
-			query += ",vcost ";
-			query += ",velectric ";
-			query += ",vaccure ";
+			query += ",round(vcost * 0.001,1) as vcost ";
+			query += ",round(velectric * 0.001,1) as velectric ";
+			query += ",round(vaccure * 0.001,1) as vaccure ";
 			query += ",carcnt ";
 			query += ",location ";
 			query += "from maindata  ";
@@ -141,9 +141,9 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
 //	    Query q = entityManager.createNativeQuery("SELECT a.firstname, a.lastname FROM Author a WHERE a.id = :id");
     	String query = "select "; 
 			query += "sum(vcar) as vcar ";
-			query += ",sum(vcost) as vcost ";
-			query += ",sum(velectric) as velectric ";
-			query += ",sum(vaccure) as vaccure ";
+			query += ",round(sum(vcost) * 0.001,1) as vcost ";
+			query += ",round(sum(velectric) * 0.001,1) as velectric ";
+			query += ",round(sum(vaccure) * 0.001,1) as vaccure ";
 			query += ",sum(carcnt) as carcnt ";
 			query += "from maindata  ";
 			query += "where dayflag = :dayflag ";
