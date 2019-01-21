@@ -16,7 +16,8 @@ import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport
 import org.springframework.stereotype.Repository;
 
 import com.querydsl.jpa.JPQLQuery;
-import com.v2g.webservice.dto.customer.customer.CustomerMainCenterDataResponseDto;
+import com.v2g.webservice.dto.main.maindata.MainCenterDataResponseDto;
+import com.v2g.webservice.dto.main.maindata.MainLocationDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataMainResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
 
@@ -46,6 +47,69 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
     	return query.fetchCount();
     }
 
+    
+    @Override
+    public List<MainLocationDataResponseDto> getMaindataLocation(MaindataSearchRequestDto maindataSearchRequestDto) {
+    	
+//	    Query q = entityManager.createNativeQuery("SELECT a.firstname, a.lastname FROM Author a WHERE a.id = :id");
+    	String query = "select "; 
+			query += " vcar ";
+			query += ",vcost ";
+			query += ",velectric ";
+			query += ",vaccure ";
+			query += ",carcnt ";
+			query += ",location ";
+			query += "from maindata  ";
+			query += "where dayflag = :dayflag ";
+			
+    	System.out.println(query);
+    	Query q = entityManager.createNativeQuery(query);
+	    q.setParameter("dayflag", maindataSearchRequestDto.getDayflag());
+	    List<Object> result = (List<Object>) q.getResultList();
+	    
+	    List<MainLocationDataResponseDto> mainLocationDataResponseDtoList = new ArrayList<MainLocationDataResponseDto>();
+    	Iterator itr = result.iterator();
+    	while(itr.hasNext()){
+    		MainLocationDataResponseDto mainLocationDataResponseDto = new MainLocationDataResponseDto();
+    	   Object[] obj = (Object[]) itr.next();
+
+    	   mainLocationDataResponseDto.setVcar(String.valueOf(obj[0]));
+    	   mainLocationDataResponseDto.setVcost(String.valueOf(obj[1]));
+    	   mainLocationDataResponseDto.setVelectric(String.valueOf(obj[2]));
+    	   mainLocationDataResponseDto.setVaccure(String.valueOf(obj[3]));
+    	   mainLocationDataResponseDto.setCarcnt(String.valueOf(obj[4]));
+    	   mainLocationDataResponseDto.setLocation(String.valueOf(obj[5]));
+    	   mainLocationDataResponseDtoList.add(mainLocationDataResponseDto);
+    	}
+   	
+    	return mainLocationDataResponseDtoList;
+    	
+    }
+    
+    
+    
+   /* @Override
+    public MaindataMainResponseDto getMaindataLocation(MaindataSearchRequestDto maindataSearchRequestDto) {
+
+        JPAQueryFactory queryFactory = new JPAQueryFactory(this.getEntityManager());
+
+        QMaindata maindata = QMaindata.maindata;
+
+        return queryFactory.select(
+        		Projections.constructor(MaindataMainResponseDto.class, 
+        				maindata.vcar
+        				, maindata.vcost
+        				, maindata.velectric
+        				, maindata.vaccure
+        				, maindata.carcnt
+        				))
+                .from(maindata)
+                .where(maindata.dayflag.eq(maindataSearchRequestDto.getDayflag()))
+                .where(maindata.location.eq(maindataSearchRequestDto.getLocation()))
+                .fetchOne();
+
+    }*/
+    
 	@Override
     public Page<MaindataMainResponseDto> getMaindataList(MaindataSearchRequestDto maindataSearchResponseDto, Pageable pageable)  {
 
@@ -72,7 +136,7 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
     }
 	
 	@Override
-    public CustomerMainCenterDataResponseDto getMainCenterData(MaindataSearchRequestDto maindataSearchRequestDto) {
+    public MainCenterDataResponseDto getMainCenterData(MaindataSearchRequestDto maindataSearchRequestDto) {
     	
 //	    Query q = entityManager.createNativeQuery("SELECT a.firstname, a.lastname FROM Author a WHERE a.id = :id");
     	String query = "select "; 
@@ -89,21 +153,22 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
 	    q.setParameter("dayflag", maindataSearchRequestDto.getDayflag());
 	    List<Object> result = (List<Object>) q.getResultList();
 	    
-	    CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = new CustomerMainCenterDataResponseDto();
+	    MainCenterDataResponseDto mainCenterDataResponseDto = new MainCenterDataResponseDto();
     	Iterator itr = result.iterator();
     	while(itr.hasNext()){
     		
     	   Object[] obj = (Object[]) itr.next();
 
-    	   customerMainCenterDataResponseDto.setVcar(String.valueOf(obj[0]));
-    	   customerMainCenterDataResponseDto.setVcost(String.valueOf(obj[1]));
-    	   customerMainCenterDataResponseDto.setVelectric(String.valueOf(obj[2]));
-    	   customerMainCenterDataResponseDto.setVaccure(String.valueOf(obj[3]));
-    	   customerMainCenterDataResponseDto.setCarcnt(String.valueOf(obj[4]));
+    	   mainCenterDataResponseDto.setVcar(String.valueOf(obj[0]));
+    	   mainCenterDataResponseDto.setVcost(String.valueOf(obj[1]));
+    	   mainCenterDataResponseDto.setVelectric(String.valueOf(obj[2]));
+    	   mainCenterDataResponseDto.setVaccure(String.valueOf(obj[3]));
+    	   mainCenterDataResponseDto.setCarcnt(String.valueOf(obj[4]));
     	}
 	    
+    	mainCenterDataResponseDto.setDayflag(maindataSearchRequestDto.getDayflag());
    	
-    	return customerMainCenterDataResponseDto;
+    	return mainCenterDataResponseDto;
     	
     }
 	

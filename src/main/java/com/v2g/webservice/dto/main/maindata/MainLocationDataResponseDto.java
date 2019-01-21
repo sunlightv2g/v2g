@@ -1,4 +1,4 @@
-package com.v2g.webservice.dto.customer.customer;
+package com.v2g.webservice.dto.main.maindata;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CustomerMainCenterDataResponseDto implements Serializable{
+public class MainLocationDataResponseDto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -16,5 +16,7 @@ public class CustomerMainCenterDataResponseDto implements Serializable{
     private String velectric;
     private String vaccure;
     private String carcnt;
+    private String location;
+    private String dayflag;
 
 }

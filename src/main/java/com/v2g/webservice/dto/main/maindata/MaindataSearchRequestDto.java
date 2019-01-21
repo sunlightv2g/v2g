@@ -11,6 +11,7 @@ public class MaindataSearchRequestDto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
     
+	private String location;
 	private String dayflag;
 
     

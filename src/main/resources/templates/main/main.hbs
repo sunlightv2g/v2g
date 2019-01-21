@@ -78,18 +78,18 @@
             <div class="boxes">
                 <div class="left">
                     <div class="region">
-                        <h2><a href="/seoul">서울</a><span>(전체 : 320대)</span></h2>
+                        <h2><a href="/seoul">서울</a><span>(전체 : {{formatStringNumber seoul.carcnt}}대)</span></h2>
                         <ul>
                             <li>
-                                <span class="num_yellow">20</span>대
+                                <span class="num_yellow">{{formatStringNumber seoul.vcar}}</span>대
                                 <span class="skyblue">금일 V2G</span>
                             </li>
                             <li>
-                                <span class="num_yellow">1,530</span>kWh
+                                <span class="num_yellow">{{formatStringNumber seoul.velectric}}</span>kWh
                                 <span class="skyblue">금일 V2G</span>
                             </li>
                             <li>
-                                <span class="num_yellow">25,360</span>kWh
+                                <span class="num_yellow">{{formatStringNumber seoul.vaccure}}</span>kWh
                                 <span class="skyblue">누적 V2G</span>
                             </li>
                         </ul>
@@ -97,69 +97,69 @@
                     <div class="region">
                         <h2>충청북도<span>(전체 : 320대)</span></h2>
                         <ul>
-                            <li>
-                                <span class="num_yellow">20</span>대
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">1,530</span>kWh
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">25,360</span>kWh
-                                <span class="skyblue">누적 V2G</span>
-                            </li>
+	                        <li>
+		                        <span class="num_yellow">{{formatStringNumber chungbuk.vcar}}</span>대
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber chungbuk.velectric}}</span>kWh
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber chungbuk.vaccure}}</span>kWh
+		                        <span class="skyblue">누적 V2G</span>
+		                    </li>
                         </ul>
                     </div>
                     <div class="region">
                         <h2>충청남도<span>(전체 : 320대)</span></h2>
                         <ul>
-                            <li>
-                                <span class="num_yellow">20</span>대
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">1,530</span>kWh
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">25,360</span>kWh
-                                <span class="skyblue">누적 V2G</span>
-                            </li>
+	                        <li>
+		                        <span class="num_yellow">{{formatStringNumber chungnam.vcar}}</span>대
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber chungnam.velectric}}</span>kWh
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber chungnam.vaccure}}</span>kWh
+		                        <span class="skyblue">누적 V2G</span>
+		                    </li>
                         </ul>
                     </div>
                     <div class="region">
                         <h2>전라북도<span>(전체 : 320대)</span></h2>
                         <ul>
-                            <li>
-                                <span class="num_yellow">20</span>대
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">1,530</span>kWh
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">25,360</span>kWh
-                                <span class="skyblue">누적 V2G</span>
-                            </li>
+	                        <li>
+		                        <span class="num_yellow">{{formatStringNumber junlabuk.vcar}}</span>대
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber junlabuk.velectric}}</span>kWh
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber junlabuk.vaccure}}</span>kWh
+		                        <span class="skyblue">누적 V2G</span>
+		                    </li>
                         </ul>
                     </div>
                     <div class="region">
                         <h2>전라남도<span>(전체 : 320대)</span></h2>
                         <ul>
-                            <li>
-                                <span class="num_yellow">20</span>대
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">1,530</span>kWh
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">25,360</span>kWh
-                                <span class="skyblue">누적 V2G</span>
-                            </li>
+                        	<li>
+		                        <span class="num_yellow">{{formatStringNumber junlanam.vcar}}</span>대
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber junlanam.velectric}}</span>kWh
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber junlanam.vaccure}}</span>kWh
+		                        <span class="skyblue">누적 V2G</span>
+		                    </li>
                         </ul>
                     </div>
                 </div><!-- left end-->
@@ -168,56 +168,56 @@
                         <h2>전국현황</h2>
                         <ul class="map01">
                             <li>
-                                <span class="num_orange">81,530</span>kWh
+                                <span class="num_orange">{{formatStringNumber centerdata.velectric}}</span>kWh
                                 <span class="skyblue">전국 금일 V2G 전력량</span>
                             </li>
                             <li>
-                                <span class="num_orange">925,360</span>kWh
+                                <span class="num_orange">{{formatStringNumber centerdata.vaccure}}</span>kWh
                                 <span class="skyblue">전국 누적 V2G 전력량</span>
                             </li>
                         </ul>
                         <ul class="map02">
                             <li>
                                 <span class="areaname"><a href="/seoul">서울</a></span>
-                                <span class="area_yellow">320</span>대
+                                <span class="area_yellow">{{formatStringNumber seoul.carcnt}}</span>대
                             </li>
                             <li>
                                 <span class="areaname">경기</span>
-                                <span class="area_yellow">120</span>대
+                                <span class="area_yellow">{{formatStringNumber kyungki.carcnt}}</span>대
                             </li>
                             <li>
                                 <span class="areaname">충남</span>
-                                <span class="area_yellow">52</span>대
+                                <span class="area_yellow">{{formatStringNumber chungnam.carcnt}}</span>대
                             </li>
                             <li>
                                 <span class="areaname">전북</span>
-                                <span class="area_yellow">4</span>대
+                                <span class="area_yellow">{{formatStringNumber junlabuk.carcnt}}</span>대
                             </li>
                             <li>
                                 <span class="areaname">전남</span>
-                                <span class="area_yellow">5</span>대
+                                <span class="area_yellow">{{formatStringNumber junlanam.carcnt}}</span>대
                             </li>
                         </ul>
                         <ul class="map03">
                             <li>
                                 <span class="areaname">강원</span>
-                                <span class="area_yellow">320</span>대
+                                <span class="area_yellow">{{formatStringNumber kangwon.carcnt}}</span>대
                             </li>
                             <li>
                                 <span class="areaname">충북</span>
-                                <span class="area_yellow">320</span>대
+                                <span class="area_yellow">{{formatStringNumber chungbuk.carcnt}}</span>대
                             </li>
                             <li>
                                 <span class="areaname">경북</span>
-                                <span class="area_yellow">52</span>대
+                                <span class="area_yellow">{{formatStringNumber kyungsangbuk.carcnt}}</span>대
                             </li>
                             <li>
                                 <span class="areaname">경남</span>
-                                <span class="area_yellow">4</span>대
+                                <span class="area_yellow">{{formatStringNumber kyungsangnam.carcnt}}</span>대
                             </li>
                             <li>
                                 <span class="areaname">제주</span>
-                                <span class="area_yellow">5</span>대
+                                <span class="area_yellow">{{formatStringNumber jeju.carcnt}}</span>대
                             </li>
                         </ul>
                     </div><!-- map end-->
@@ -232,86 +232,86 @@
                     <div class="region">
                         <h2>경기<span>(전체 : 320대)</span></h2>
                         <ul>
-                            <li>
-                                <span class="num_yellow">20</span>대
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">1,530</span>kWh
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">25,360</span>kWh
-                                <span class="skyblue">누적 V2G</span>
-                            </li>
+	                        <li>
+		                        <span class="num_yellow">{{formatStringNumber kyungki.vcar}}</span>대
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber kyungki.velectric}}</span>kWh
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber kyungki.vaccure}}</span>kWh
+		                        <span class="skyblue">누적 V2G</span>
+		                    </li>
                         </ul>
                     </div>
                     <div class="region">
                         <h2>강원<span>(전체 : 320대)</span></h2>
                         <ul>
-                            <li>
-                                <span class="num_yellow">20</span>대
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">1,530</span>kWh
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">25,360</span>kWh
-                                <span class="skyblue">누적 V2G</span>
-                            </li>
+	                        <li>
+		                        <span class="num_yellow">{{formatStringNumber kangwon.vcar}}</span>대
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber kangwon.velectric}}</span>kWh
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber kangwon.vaccure}}</span>kWh
+		                        <span class="skyblue">누적 V2G</span>
+		                    </li>
                         </ul>
                     </div>
                     <div class="region">
                         <h2>경상북도<span>(전체 : 320대)</span></h2>
                         <ul>
-                            <li>
-                                <span class="num_yellow">20</span>대
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">1,530</span>kWh
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">25,360</span>kWh
-                                <span class="skyblue">누적 V2G</span>
-                            </li>
+	                        <li>
+		                        <span class="num_yellow">{{formatStringNumber kyungsangbuk.vcar}}</span>대
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber kyungsangbuk.velectric}}</span>kWh
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber kyungsangbuk.vaccure}}</span>kWh
+		                        <span class="skyblue">누적 V2G</span>
+		                    </li>
                         </ul>
                     </div>
                     <div class="region">
                         <h2>경상남도<span>(전체 : 320대)</span></h2>
                         <ul>
-                            <li>
-                                <span class="num_yellow">20</span>대
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">1,530</span>kWh
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">25,360</span>kWh
-                                <span class="skyblue">누적 V2G</span>
-                            </li>
+	                        <li>
+		                        <span class="num_yellow">{{formatStringNumber kyungsangnam.vcar}}</span>대
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber kyungsangnam.velectric}}</span>kWh
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber kyungsangnam.vaccure}}</span>kWh
+		                        <span class="skyblue">누적 V2G</span>
+		                    </li>
                         </ul>
                     </div>
                     <div class="region">
                         <h2>제주도<span>(전체 : 320대)</span></h2>
                         <ul>
-                            <li>
-                                <span class="num_yellow">20</span>대
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">1,530</span>kWh
-                                <span class="skyblue">금일 V2G</span>
-                            </li>
-                            <li>
-                                <span class="num_yellow">25,360</span>kWh
-                                <span class="skyblue">누적 V2G</span>
-                            </li>
+	                        <li>
+		                        <span class="num_yellow">{{formatStringNumber jeju.vcar}}</span>대
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber jeju.velectric}}</span>kWh
+		                        <span class="skyblue">금일 V2G</span>
+		                    </li>
+		                    <li>
+		                        <span class="num_yellow">{{formatStringNumber jeju.vaccure}}</span>kWh
+		                        <span class="skyblue">누적 V2G</span>
+		                    </li>
                         </ul>
                     </div>
                 </div><!-- left end-->

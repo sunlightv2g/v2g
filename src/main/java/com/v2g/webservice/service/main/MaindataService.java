@@ -1,6 +1,7 @@
 package com.v2g.webservice.service.main;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,7 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.v2g.webservice.domain.main.maindata.MaindataRepository;
-import com.v2g.webservice.dto.customer.customer.CustomerMainCenterDataResponseDto;
+import com.v2g.webservice.dto.main.maindata.MainCenterDataResponseDto;
+import com.v2g.webservice.dto.main.maindata.MainLocationDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataMainResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
 
@@ -50,7 +52,12 @@ public class MaindataService {
     }
     
     @Transactional(readOnly = true)
-    public CustomerMainCenterDataResponseDto getMainCenterData(MaindataSearchRequestDto maindataSearchRequestDto) {
+    public List<MainLocationDataResponseDto> getMaindataLocation(MaindataSearchRequestDto maindataSearchRequestDto) {
+    	return maindataRepository.getMaindataLocation(maindataSearchRequestDto);
+    }
+    
+    @Transactional(readOnly = true)
+    public MainCenterDataResponseDto getMainCenterData(MaindataSearchRequestDto maindataSearchRequestDto) {
     	
     	if(maindataSearchRequestDto.getDayflag() == null || maindataSearchRequestDto.getDayflag().equals("")) {
     		Calendar cal = Calendar.getInstance();
