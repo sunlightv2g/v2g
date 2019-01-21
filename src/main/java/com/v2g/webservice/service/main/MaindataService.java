@@ -63,7 +63,7 @@ public class MaindataService {
     	}else {
     		maindataSearchRequestDto.setDayflag("1");
     	}
-    	
+    	System.out.println("dayflag : " + maindataSearchRequestDto.getDayflag());
     	return maindataRepository.getMainCenterData(maindataSearchRequestDto);
     }
     

@@ -39,7 +39,6 @@ public class WebController {
 	
     @GetMapping("/main")
     public String mainMain(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
-    	
 		CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
 		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
     	
@@ -47,23 +46,26 @@ public class WebController {
     }
     
     @GetMapping("/seoul")
-    public String mainSeoul(Model model) {
-    	//model.addAttribute("posts", postsService.findAllDesc());
-    	//return "main";
+    public String mainSeoul(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+		CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
+		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
+		
     	return "main/seoul";
     }
     
     @GetMapping("/apt")
-    public String mainApt(Model model) {
-    	//model.addAttribute("posts", postsService.findAllDesc());
-    	//return "main";
+    public String mainApt(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+		CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
+		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
+		
     	return "main/apt";
     }
     
     @GetMapping("/location")
-    public String mainLocation(Model model) {
-    	//model.addAttribute("posts", postsService.findAllDesc());
-    	//return "main";
+    public String mainLocation(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+   		CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
+   		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
+   		
     	return "main/location";
     }
     
@@ -86,23 +88,26 @@ public class WebController {
     }
     
     @GetMapping("/trade")
-    public String trade(Model model) {
-    	//model.addAttribute("posts", postsService.findAllDesc());
-    	//return "main";
+    public String trade(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+   		CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
+   		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
+   		
     	return "trade/trade";
     }
     
     @GetMapping("/analysis")
-    public String analysis(Model model) {
-    	//model.addAttribute("posts", postsService.findAllDesc());
-    	//return "main";
+    public String analysis(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+    	CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
+   		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
+   		
     	return "analysis/analysis";
     }
     
     @GetMapping("/reservation")
-    public String reservation(Model model) {
-    	//model.addAttribute("posts", postsService.findAllDesc());
-    	//return "main";
+    public String reservation(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+    	CustomerMainCenterDataResponseDto customerMainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
+   		model.addAttribute("centerdata", customerMainCenterDataResponseDto);
+   		
     	return "reservation/reservation";
     }
     
