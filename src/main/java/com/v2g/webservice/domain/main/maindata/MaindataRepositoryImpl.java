@@ -16,8 +16,7 @@ import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport
 import org.springframework.stereotype.Repository;
 
 import com.querydsl.jpa.JPQLQuery;
-import com.v2g.webservice.dto.main.maindata.MainCenterDataResponseDto;
-import com.v2g.webservice.dto.main.maindata.MainLocationDataResponseDto;
+import com.v2g.webservice.dto.main.maindata.MainDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataMainResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
 
@@ -49,17 +48,46 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
 
     
     @Override
-    public List<MainLocationDataResponseDto> getMaindataLocation(MaindataSearchRequestDto maindataSearchRequestDto) {
+    public List<MainDataResponseDto> getMainDataTable(MaindataSearchRequestDto maindataSearchRequestDto) {
     	
+    	String tbName = maindataSearchRequestDto.getTablename();
 //	    Query q = entityManager.createNativeQuery("SELECT a.firstname, a.lastname FROM Author a WHERE a.id = :id");
     	String query = "select "; 
-			query += " vcar ";
-			query += ",round(vcost * 0.001,1) as vcost ";
-			query += ",round(velectric * 0.001,1) as velectric ";
-			query += ",round(vaccure * 0.001,1) as vaccure ";
-			query += ",carcnt ";
-			query += ",location ";
-			query += "from maindata  ";
+			
+			switch (tbName) {
+			case "maindata":
+				query += " vcar ";
+				query += ",round(vcost * 0.001,1) as vcost ";
+				query += ",round(velectric * 0.001,1) as velectric ";
+				query += ",round(vaccure * 0.001,1) as vaccure ";
+				query += ",carcnt ";
+				query += ",location ";
+				query += "from ";
+				query += " maindata ";
+				break;
+			case "seoul":
+				query += " vcar ";
+				query += ",round(vcost,1) as vcost ";
+				query += ",round(velectric,1) as velectric ";
+				query += ",round(vaccure,1) as vaccure ";
+				query += ",carcnt ";
+				query += ",location ";
+				query += "from ";
+				query += " seoul ";
+				break;				
+			case "location":
+				query += " vcar ";
+				query += ",round(vcost,1) as vcost ";
+				query += ",round(velectric,1) as velectric ";
+				query += ",round(vaccure,1) as vaccure ";
+				query += ",carcnt ";
+				query += ",location ";
+				query += "from ";
+				query += " location ";
+				break;
+			
+			}
+			
 			query += "where dayflag = :dayflag ";
 			
     	System.out.println(query);
@@ -67,22 +95,22 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
 	    q.setParameter("dayflag", maindataSearchRequestDto.getDayflag());
 	    List<Object> result = (List<Object>) q.getResultList();
 	    
-	    List<MainLocationDataResponseDto> mainLocationDataResponseDtoList = new ArrayList<MainLocationDataResponseDto>();
+	    List<MainDataResponseDto> mainDataResponseDtoList = new ArrayList<MainDataResponseDto>();
     	Iterator itr = result.iterator();
     	while(itr.hasNext()){
-    		MainLocationDataResponseDto mainLocationDataResponseDto = new MainLocationDataResponseDto();
+    		MainDataResponseDto mainDataResponseDto = new MainDataResponseDto();
     	   Object[] obj = (Object[]) itr.next();
 
-    	   mainLocationDataResponseDto.setVcar(String.valueOf(obj[0]));
-    	   mainLocationDataResponseDto.setVcost(String.valueOf(obj[1]));
-    	   mainLocationDataResponseDto.setVelectric(String.valueOf(obj[2]));
-    	   mainLocationDataResponseDto.setVaccure(String.valueOf(obj[3]));
-    	   mainLocationDataResponseDto.setCarcnt(String.valueOf(obj[4]));
-    	   mainLocationDataResponseDto.setLocation(String.valueOf(obj[5]));
-    	   mainLocationDataResponseDtoList.add(mainLocationDataResponseDto);
+    	   mainDataResponseDto.setVcar(String.valueOf(obj[0]));
+    	   mainDataResponseDto.setVcost(String.valueOf(obj[1]));
+    	   mainDataResponseDto.setVelectric(String.valueOf(obj[2]));
+    	   mainDataResponseDto.setVaccure(String.valueOf(obj[3]));
+    	   mainDataResponseDto.setCarcnt(String.valueOf(obj[4]));
+    	   mainDataResponseDto.setLocation(String.valueOf(obj[5]));
+    	   mainDataResponseDtoList.add(mainDataResponseDto);
     	}
    	
-    	return mainLocationDataResponseDtoList;
+    	return mainDataResponseDtoList;
     	
     }
     
@@ -136,7 +164,7 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
     }
 	
 	@Override
-    public MainCenterDataResponseDto getMainCenterData(MaindataSearchRequestDto maindataSearchRequestDto) {
+    public MainDataResponseDto getMainCenterData(MaindataSearchRequestDto maindataSearchRequestDto) {
     	
 //	    Query q = entityManager.createNativeQuery("SELECT a.firstname, a.lastname FROM Author a WHERE a.id = :id");
     	String query = "select "; 
@@ -153,7 +181,7 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
 	    q.setParameter("dayflag", maindataSearchRequestDto.getDayflag());
 	    List<Object> result = (List<Object>) q.getResultList();
 	    
-	    MainCenterDataResponseDto mainCenterDataResponseDto = new MainCenterDataResponseDto();
+	    MainDataResponseDto mainCenterDataResponseDto = new MainDataResponseDto();
     	Iterator itr = result.iterator();
     	while(itr.hasNext()){
     		

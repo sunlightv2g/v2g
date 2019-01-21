@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.v2g.webservice.domain.main.maindata.MaindataRepository;
-import com.v2g.webservice.dto.main.maindata.MainCenterDataResponseDto;
-import com.v2g.webservice.dto.main.maindata.MainLocationDataResponseDto;
+import com.v2g.webservice.dto.main.maindata.MainDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataMainResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
 
@@ -52,12 +51,12 @@ public class MaindataService {
     }
     
     @Transactional(readOnly = true)
-    public List<MainLocationDataResponseDto> getMaindataLocation(MaindataSearchRequestDto maindataSearchRequestDto) {
-    	return maindataRepository.getMaindataLocation(maindataSearchRequestDto);
+    public List<MainDataResponseDto> getMainDataTable(MaindataSearchRequestDto maindataSearchRequestDto) {
+    	return maindataRepository.getMainDataTable(maindataSearchRequestDto);
     }
     
     @Transactional(readOnly = true)
-    public MainCenterDataResponseDto getMainCenterData(MaindataSearchRequestDto maindataSearchRequestDto) {
+    public MainDataResponseDto getMainCenterData(MaindataSearchRequestDto maindataSearchRequestDto) {
     	
     	if(maindataSearchRequestDto.getDayflag() == null || maindataSearchRequestDto.getDayflag().equals("")) {
     		Calendar cal = Calendar.getInstance();

@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MainLocationDataResponseDto implements Serializable{
+public class MainDataResponseDto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	

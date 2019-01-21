@@ -5,7 +5,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.v2g.webservice.dto.customer.customer.CustomerMainResponseDto;
 import com.v2g.webservice.dto.customer.customer.CustomerSearchRequestDto;
-import com.v2g.webservice.dto.main.maindata.MainCenterDataResponseDto;
+import com.v2g.webservice.dto.main.maindata.MainDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
 
 public interface CustomerCustom {

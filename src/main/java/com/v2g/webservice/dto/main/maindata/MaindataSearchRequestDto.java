@@ -13,6 +13,7 @@ public class MaindataSearchRequestDto implements Serializable{
     
 	private String location;
 	private String dayflag;
+	private String tablename;
 
     
 }
