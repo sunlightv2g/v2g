@@ -16,9 +16,12 @@ import com.v2g.webservice.dto.environment.userinfo.UserinfoMainResponseDto;
 import com.v2g.webservice.dto.environment.userinfo.UserinfoSearchRequestDto;
 import com.v2g.webservice.dto.main.maindata.MainDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
+import com.v2g.webservice.dto.trade.trade.TradeResponseDto;
+import com.v2g.webservice.dto.trade.trade.TradeSearchRequestDto;
 import com.v2g.webservice.service.customer.CustomerService;
 import com.v2g.webservice.service.environment.UserinfoService;
 import com.v2g.webservice.service.main.MaindataService;
+import com.v2g.webservice.service.trade.TradeService;
 
 import lombok.AllArgsConstructor;
 
@@ -29,6 +32,7 @@ public class WebController {
 	private UserinfoService userinfoService;
 	private CustomerService customerService;
 	private MaindataService maindataService;
+	private TradeService tradeService;	
 	
     @GetMapping("/")
     public String main(Model model) {
@@ -289,6 +293,86 @@ public class WebController {
     public String trade(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
    		MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
    		model.addAttribute("centerdata", mainCenterDataResponseDto);
+		
+   		TradeSearchRequestDto tradeSearchRequestDto = new TradeSearchRequestDto();
+   		
+		List<TradeResponseDto> tradeResponseDtoList = tradeService.getTradeList(tradeSearchRequestDto);
+		
+		for(TradeResponseDto tradeResponseDto : tradeResponseDtoList) {
+			switch (tradeResponseDto.getVlocation()) {
+			case "서울":
+				if(tradeResponseDto.getVflag().equals("KPX")) {
+					model.addAttribute("kpxseoul", tradeResponseDto);
+				}else {
+					model.addAttribute("drseoul", tradeResponseDto);					
+				}
+				break;
+			case "경기":
+				if(tradeResponseDto.getVflag().equals("KPX")) {
+					model.addAttribute("kpxkyungki", tradeResponseDto);
+				}else {
+					model.addAttribute("drkyungki", tradeResponseDto);					
+				}
+				break;
+			case "강원":
+				if(tradeResponseDto.getVflag().equals("KPX")) {
+					model.addAttribute("kpxkangwon", tradeResponseDto);
+				}else {
+					model.addAttribute("drkangwon", tradeResponseDto);					
+				}
+				break;
+			case "충청북도":
+				if(tradeResponseDto.getVflag().equals("KPX")) {
+					model.addAttribute("kpxchungbuk", tradeResponseDto);
+				}else {
+					model.addAttribute("drchungbuk", tradeResponseDto);					
+				}
+				break;
+			case "충청남도":
+				if(tradeResponseDto.getVflag().equals("KPX")) {
+					model.addAttribute("kpxchungnam", tradeResponseDto);
+				}else {
+					model.addAttribute("drchungnam", tradeResponseDto);					
+				}
+				break;
+			case "전라북도":
+				if(tradeResponseDto.getVflag().equals("KPX")) {
+					model.addAttribute("kpxjunbuk", tradeResponseDto);
+				}else {
+					model.addAttribute("drjunbuk", tradeResponseDto);					
+				}
+				break;
+			case "전라남도":
+				if(tradeResponseDto.getVflag().equals("KPX")) {
+					model.addAttribute("kpxjunnam", tradeResponseDto);
+				}else {
+					model.addAttribute("drjunnam", tradeResponseDto);					
+				}
+				break;
+			case "경상북도":
+				if(tradeResponseDto.getVflag().equals("KPX")) {
+					model.addAttribute("kpxkyungbuk", tradeResponseDto);
+				}else {
+					model.addAttribute("drkyungbuk", tradeResponseDto);					
+				}
+				break;
+			case "경상남도":
+				if(tradeResponseDto.getVflag().equals("KPX")) {
+					model.addAttribute("kpxkyungnam", tradeResponseDto);
+				}else {
+					model.addAttribute("drkyungnam", tradeResponseDto);					
+				}
+				break;
+			case "제주도":
+				if(tradeResponseDto.getVflag().equals("KPX")) {
+					model.addAttribute("kpxjeju", tradeResponseDto);
+				}else {
+					model.addAttribute("drjeju", tradeResponseDto);					
+				}
+				break;	
+			}
+		}
+   		
    		
     	return "trade/trade";
     }
