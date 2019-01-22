@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.v2g.webservice.dto.analysis.analysis.AnalysisResponseDto;
+import com.v2g.webservice.dto.analysis.analysis.AnalysisSearchRequestDto;
 import com.v2g.webservice.dto.customer.customer.CustomerMainResponseDto;
 import com.v2g.webservice.dto.customer.customer.CustomerSearchRequestDto;
 import com.v2g.webservice.dto.environment.userinfo.UserinfoMainResponseDto;
@@ -18,6 +20,7 @@ import com.v2g.webservice.dto.main.maindata.MainDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
 import com.v2g.webservice.dto.trade.trade.TradeResponseDto;
 import com.v2g.webservice.dto.trade.trade.TradeSearchRequestDto;
+import com.v2g.webservice.service.analysis.AnalysisService;
 import com.v2g.webservice.service.customer.CustomerService;
 import com.v2g.webservice.service.environment.UserinfoService;
 import com.v2g.webservice.service.main.MaindataService;
@@ -33,6 +36,7 @@ public class WebController {
 	private CustomerService customerService;
 	private MaindataService maindataService;
 	private TradeService tradeService;	
+	private AnalysisService analysisService;	
 	
     @GetMapping("/")
     public String main(Model model) {
@@ -297,8 +301,20 @@ public class WebController {
    		TradeSearchRequestDto tradeSearchRequestDto = new TradeSearchRequestDto();
    		
 		List<TradeResponseDto> tradeResponseDtoList = tradeService.getTradeList(tradeSearchRequestDto);
-		
+		double kpxTotalVcost = 0;
+		double kpxTotalvelectric = 0;
+		double drTotalVcost = 0;
+		double drTotalvelectric = 0;
 		for(TradeResponseDto tradeResponseDto : tradeResponseDtoList) {
+			
+			if(tradeResponseDto.getVflag().equals("KPX")) {
+				kpxTotalVcost += Double.parseDouble(tradeResponseDto.getVcost());
+				kpxTotalvelectric += Double.parseDouble(tradeResponseDto.getVelectric());	
+			}else {
+				drTotalVcost += Double.parseDouble(tradeResponseDto.getVcost());
+				drTotalvelectric += Double.parseDouble(tradeResponseDto.getVelectric());	
+			}
+			
 			switch (tradeResponseDto.getVlocation()) {
 			case "서울":
 				if(tradeResponseDto.getVflag().equals("KPX")) {
@@ -373,6 +389,10 @@ public class WebController {
 			}
 		}
    		
+		model.addAttribute("kpxTotalVcost", String.valueOf(kpxTotalVcost));
+		model.addAttribute("kpxTotalvelectric", String.valueOf(kpxTotalvelectric));
+		model.addAttribute("drTotalVcost", String.valueOf(drTotalVcost));
+		model.addAttribute("drTotalvelectric", String.valueOf(drTotalvelectric));
    		
     	return "trade/trade";
     }
@@ -381,6 +401,69 @@ public class WebController {
     public String analysis(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
     	MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
    		model.addAttribute("centerdata", mainCenterDataResponseDto);
+   		
+   		AnalysisSearchRequestDto analysisSearchRequestDto = new AnalysisSearchRequestDto();
+   		List<AnalysisResponseDto> analysisResponseDtoList = analysisService.getAnalysisList(analysisSearchRequestDto);
+   		String kpxXAxis = "";
+   		String drXAxis = "";
+   		String kpxYAxisp = "";
+   		String kpxYAxis = "";
+   		String drYAxisp = "";
+   		String drYAxis = "";
+   		
+   		String kpxVpcost = "";
+   		String kpxVpelectric = "";
+   		String kpxVcost = "";
+   		String kpxVelectric = "";
+   		
+   		String drVpcost = "";
+   		String drVpelectric = "";
+   		String drVcost = "";
+   		String drVelectric = "";
+   		
+   		
+   		for(AnalysisResponseDto analysisResponseDto : analysisResponseDtoList) {
+   			if(mainCenterDataResponseDto.getDayflag().equals(analysisResponseDto.getDayflag())) {
+   	   			if(analysisResponseDto.getVflag().equals("KPX")) {
+   	   				kpxVpcost = analysisResponseDto.getVpcost();
+   	   				kpxVpelectric = analysisResponseDto.getVpelectric();
+   	   				kpxVcost = analysisResponseDto.getVcost();
+   	   				kpxVelectric = analysisResponseDto.getVelectric();
+   	   			}else {
+   	   				drVpcost = analysisResponseDto.getVpcost();
+   	   				drVpelectric = analysisResponseDto.getVpelectric();
+   	   				drVcost = analysisResponseDto.getVcost();
+   	   				drVelectric = analysisResponseDto.getVelectric();
+   	   			}
+   			}
+   			
+   			if(analysisResponseDto.getVflag().equals("KPX")) {
+   				kpxXAxis += "'" + addZero(analysisResponseDto.getDayflag()) + "',";
+   				kpxYAxisp += analysisResponseDto.getVpelectric() + ",";
+   				kpxYAxis += analysisResponseDto.getVelectric() + ",";
+   			}else {
+   				drXAxis += "'" + addZero(analysisResponseDto.getDayflag()) + "',";
+   				drYAxisp += analysisResponseDto.getVpelectric() + ",";
+   				drYAxis += analysisResponseDto.getVelectric() + ",";
+   			}
+   		}
+   		
+   		model.addAttribute("kpxXAxis", kpxXAxis);
+   		model.addAttribute("kpxYAxisp", kpxYAxisp);
+   		model.addAttribute("kpxYAxis", kpxYAxis);
+   		model.addAttribute("drXAxis", drXAxis);
+   		model.addAttribute("drYAxisp", drYAxisp);
+   		model.addAttribute("drYAxis", drYAxis);
+   		
+   		model.addAttribute("kpxVpcost", kpxVpcost);
+   		model.addAttribute("kpxVpelectric", String.valueOf((Double.parseDouble(kpxVpelectric) * 100)));
+   		model.addAttribute("kpxVcost", kpxVcost);
+   		model.addAttribute("kpxVelectric", String.valueOf((Double.parseDouble(kpxVelectric) * 100)));
+   		
+   		model.addAttribute("drVpcost", drVpcost);
+   		model.addAttribute("drVpelectric", String.valueOf((Double.parseDouble(drVpelectric) * 100)));
+   		model.addAttribute("drVcost", drVcost);
+   		model.addAttribute("drVelectric", String.valueOf((Double.parseDouble(drVelectric) * 100)));
    		
     	return "analysis/analysis";
     }
@@ -411,6 +494,11 @@ public class WebController {
     	return "environment/environment";
     }
 	
-    
+	public static String addZero(String str) {
+	    if(str.length() == 1) {
+	    	str = "0" + str;
+	    }
+	    return str;
+	}
     
 }
