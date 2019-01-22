@@ -91,12 +91,12 @@ public class WebController {
 			}
 		}
 
-		
     	return "main/main";
     }
     
     @GetMapping("/seoul")
     public String mainSeoul(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+    	
 		MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
 		model.addAttribute("centerdata", mainCenterDataResponseDto);
 		
@@ -191,6 +191,7 @@ public class WebController {
     
     @GetMapping("/apt")
     public String mainApt(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+    	
 		MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
 		model.addAttribute("centerdata", mainCenterDataResponseDto);
 		
@@ -199,6 +200,7 @@ public class WebController {
     
     @GetMapping("/location")
     public String mainLocation(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+    	
    		MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
    		model.addAttribute("centerdata", mainCenterDataResponseDto);
    		
@@ -277,6 +279,7 @@ public class WebController {
     
     @GetMapping("/customer")
     public String customer(Model model, MaindataSearchRequestDto maindataSearchRequestDto, CustomerSearchRequestDto customerSearchResponseDto, @PageableDefault(sort = { "id" }, direction = Direction.DESC, page=0, size = 10) Pageable pageable){
+    	model.addAttribute("memudata", "menu1");
     	
    		MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
    		model.addAttribute("centerdata", mainCenterDataResponseDto);
@@ -295,6 +298,8 @@ public class WebController {
     
     @GetMapping("/trade")
     public String trade(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+    	model.addAttribute("memudata", "menu2");
+    	
    		MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
    		model.addAttribute("centerdata", mainCenterDataResponseDto);
 		
@@ -399,6 +404,8 @@ public class WebController {
     
     @GetMapping("/analysis")
     public String analysis(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+    	model.addAttribute("memudata", "menu3");
+    	
     	MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
    		model.addAttribute("centerdata", mainCenterDataResponseDto);
    		
@@ -470,6 +477,8 @@ public class WebController {
     
     @GetMapping("/reservation")
     public String reservation(Model model, MaindataSearchRequestDto maindataSearchRequestDto) {
+    	model.addAttribute("memudata", "menu4");
+    	
     	MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
    		model.addAttribute("centerdata", mainCenterDataResponseDto);
    		
@@ -478,7 +487,8 @@ public class WebController {
     
     @GetMapping("/environment")
     public String environment(Model model, MaindataSearchRequestDto maindataSearchRequestDto, UserinfoSearchRequestDto userinfoSearchResponseDto, @PageableDefault(sort = { "id" }, direction = Direction.DESC, page=0, size = 10) Pageable pageable){
-    
+    	model.addAttribute("memudata", "menu5");
+    	
    		MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
    		model.addAttribute("centerdata", mainCenterDataResponseDto);
    		
