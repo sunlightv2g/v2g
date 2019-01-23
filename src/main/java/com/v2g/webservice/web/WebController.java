@@ -374,14 +374,14 @@ public class WebController {
 		model.addAttribute("A3data", String.valueOf(A3data));
 		model.addAttribute("A4data", String.valueOf(A4data));
 		
-		model.addAttribute("Ahight", String.valueOf(Double.parseDouble(A3data) * 2));
+		model.addAttribute("Ahight", String.valueOf(Double.parseDouble(A3data)*150/100));
 		
 		model.addAttribute("B1data", String.valueOf(B1data));
 		model.addAttribute("B2data", String.valueOf(B2data));
 		model.addAttribute("B3data", String.valueOf(B3data));
 		model.addAttribute("B4data", String.valueOf(B4data));
 		
-		model.addAttribute("Bhight", String.valueOf(Double.parseDouble(B3data) * 2));
+		model.addAttribute("Bhight", String.valueOf(Double.parseDouble(B3data)*150/100));
 		
 		
     	return "main/apt";

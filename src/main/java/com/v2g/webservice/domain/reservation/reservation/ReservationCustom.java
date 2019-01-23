@@ -14,6 +14,7 @@ public interface ReservationCustom {
     long getReservationByQuerydsl(String userid);
     List<ReservationResponseDto> getTodayCost();
     List<ReservationResponseDto> getTradeHistory();
+    
     /*long getReservationByQuerydsl(String userid, String userpass);*/
 	/*long update(Reservation entity);*/
 }

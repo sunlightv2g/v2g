@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.v2g.webservice.domain.reservation.reservation.Reservation;
 import com.v2g.webservice.domain.reservation.reservation.ReservationRepository;
 import com.v2g.webservice.dto.reservation.reservation.ReservationMainResponseDto;
 import com.v2g.webservice.dto.reservation.reservation.ReservationResponseDto;
@@ -54,6 +55,11 @@ public class ReservationService {
     @Transactional
     public List<ReservationResponseDto> getTradeHistory(){
     	return reservationRepository.getTradeHistory();
+    }
+    
+    @Transactional
+    public List<Reservation> findByUserid(String userid){
+    	return reservationRepository.findByUserid(userid);
     }
     
     

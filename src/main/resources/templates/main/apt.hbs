@@ -23,22 +23,22 @@
                 <div class="car">
                     <dl>
                         <dt><span class="dot"></span>고객번호 : {{A1User.userid}}</dt>
-                        <dd class="sky">잔량 : {{A1User.vleft}}</dd>
+                        <dd class="sky">잔량 : {{A1User.vleft}}%</dd>
                         <dd class="yellow">예약 : {{A1User.vreservation}}%</dd>
                     </dl>
                     <dl>
 	                    <dt><span class="dot"></span>고객번호 : {{A1User.userid}}</dt>
-	                    <dd class="sky">잔량 : {{A2User.vleft}}</dd>
+	                    <dd class="sky">잔량 : {{A2User.vleft}}%</dd>
 	                    <dd class="yellow">예약 : {{A2User.vreservation}}%</dd>
                     </dl>
                     <dl>
 	                    <dt><span class="dot"></span>고객번호 : {{A3User.userid}}</dt>
-	                    <dd class="sky">잔량 : {{A3User.vleft}}</dd>
+	                    <dd class="sky">잔량 : {{A3User.vleft}}%</dd>
 	                    <dd class="yellow">예약 : {{A3User.vreservation}}%</dd>
                     </dl>
                     <dl>
 	                    <dt><span class="dot"></span>고객번호 : {{A4User.userid}}</dt>
-	                    <dd class="sky">잔량 : {{A4User.vleft}}</dd>
+	                    <dd class="sky">잔량 : {{A4User.vleft}}%</dd>
 	                    <dd class="yellow">예약 : {{A4User.vreservation}}%</dd>
                     </dl>
                 </div><!-- car end-->
@@ -61,10 +61,10 @@
                     </li>
                 </ul>
                 <div class="building">
-                    <h4>건물_A</h4>
+                    <h4>A_Zone</h4>
                     <ul class="bd">
                         <li><span class="num">{{formatStringNumber Aelectric}}</span>kWh</li>
-                        <li><span class="num">{{formatStringNumber Acost}}</span>천원</li>
+                        <li><span class="num">{{formatStringNumber Acost}}</span>원</li>
                     </ul>
                     <div class="battery">
                         <p class="top_cell"></p>
@@ -75,7 +75,7 @@
 						<div class="car2">
 							<dl>
 							<dt><span class="dot"></span>입력전압: {{A1data}} V<br/>
-							<span class="dot"></span>충전용량: {{A2data}} KWh (1MWh)<br/>
+							<span class="dot"></span>충전용량: {{A2data}} KWh <span style="padding-left:68px;font-weight:bold;color:#ffcc00">(100kWh)</span><br/>
 							<span class="dot"></span>BATT SOC: {{A3data}} %<br/>
 							<span class="dot"></span>출력전압: {{A4data}} V</dt>
 							</dl>
@@ -86,22 +86,22 @@
                 <div class="car">
                     <dl>
 	                    <dt><span class="dot"></span>고객번호 : {{B1User.userid}}</dt>
-	                    <dd class="sky">잔량 : {{B1User.vleft}}</dd>
+	                    <dd class="sky">잔량 : {{B1User.vleft}}%</dd>
 	                    <dd class="yellow">예약 : {{B1User.vreservation}}%</dd>
                     </dl>
                     <dl>
 	                    <dt><span class="dot"></span>고객번호 : {{B2User.userid}}</dt>
-	                    <dd class="sky">잔량 : {{B2User.vleft}}</dd>
+	                    <dd class="sky">잔량 : {{B2User.vleft}}%</dd>
 	                    <dd class="yellow">예약 : {{B2User.vreservation}}%</dd>
                     </dl>
                     <dl>
 	                    <dt><span class="dot"></span>고객번호 : {{B3User.userid}}</dt>
-	                    <dd class="sky">잔량 : {{B3User.vleft}}</dd>
+	                    <dd class="sky">잔량 : {{B3User.vleft}}%</dd>
 	                    <dd class="yellow">예약 : {{B3User.vreservation}}%</dd>
                     </dl>
                     <dl>
 	                    <dt><span class="dot"></span>고객번호 : {{B4User.userid}}</dt>
-	                    <dd class="sky">잔량 : {{B4User.vleft}}</dd>
+	                    <dd class="sky">잔량 : {{B4User.vleft}}%</dd>
 	                    <dd class="yellow">예약 : {{B4User.vreservation}}%</dd>
                     </dl>
                 </div><!-- car end-->
@@ -124,10 +124,10 @@
 	            </li>
                 </ul>
                 <div class="building fr">
-                    <h4>건물_B</h4>
+                    <h4>B_Zone</h4>
                     <ul class="bd">
                         <li><span class="num">{{formatStringNumber Belectric}}</span>kWh</li>
-                        <li><span class="num">{{formatStringNumber Bcost}}</span>천원</li>
+                        <li><span class="num">{{formatStringNumber Bcost}}</span>원</li>
                     </ul>
                     <div class="battery">
                         <p class="top_cell"></p>
@@ -138,7 +138,7 @@
 						<div class="car2">
 							<dl>
 							<dt><span class="dot"></span>입력전압: {{B1data}} V<br/>
-							<span class="dot"></span>충전용량: {{B2data}} KWh (1MWh)<br/>
+							<span class="dot"></span>충전용량: {{B2data}} KWh <span style="padding-left:68px;font-weight:bold;color:#ffcc00">(100kWh)</span><br/>
 							<span class="dot"></span>BATT SOC: {{B3data}} %<br/>
 							<span class="dot"></span>출력전압: {{B4data}} V</dt>
 							</dl>

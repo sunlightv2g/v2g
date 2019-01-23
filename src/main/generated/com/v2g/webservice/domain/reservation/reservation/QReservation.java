@@ -37,9 +37,9 @@ public class QReservation extends EntityPathBase<Reservation> {
 
     public final StringPath relectirc = createString("relectirc");
 
-    public final StringPath residual = createString("residual");
-
     public final StringPath rflag = createString("rflag");
+
+    public final StringPath rleft = createString("rleft");
 
     public final StringPath rtime = createString("rtime");
 

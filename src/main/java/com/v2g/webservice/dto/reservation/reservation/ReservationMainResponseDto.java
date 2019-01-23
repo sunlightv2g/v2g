@@ -19,7 +19,7 @@ public class ReservationMainResponseDto implements Serializable{
     private String rflag;
     private String rcost;
     private String relectirc;
-    private String residual;
+    private String rleft;
 
     public ReservationMainResponseDto(Reservation entity) {
         id = entity.getId();
@@ -30,7 +30,7 @@ public class ReservationMainResponseDto implements Serializable{
         rflag = entity.getRflag();
         rcost = entity.getRcost();
         relectirc = entity.getRelectirc();
-        residual = entity.getResidual();
+        rleft = entity.getRleft();
     }
     
 }

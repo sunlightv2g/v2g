@@ -5,6 +5,26 @@
     </head>
 	<!-- 하이차트 스크립트 -->
 	<script type="text/javascript">
+	$(function() {
+        var dates = $( "#from1, #to1" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showOn: "button",
+            buttonImage: "img/icon_calendar.gif",
+            buttonImageOnly: true,
+            onSelect: function( selectedDate ) {
+                var option = this.id == "from1" ? "minDate" : "maxDate",
+                instance = $( this ).data( "datepicker" ),
+                date = $.datepicker.parseDate(
+                    instance.settings.dateFormat ||
+                    $.datepicker._defaults.dateFormat,
+                    selectedDate, instance.settings );
+                dates.not( this ).datepicker( "option", option, date );
+            }
+        });
+    });
+	
+	
 	$(function () {
 		Highcharts.chart('chart01', {
 			colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
@@ -53,7 +73,7 @@
 					}
 				},
 			series: [{
-				name: '전력량',
+				name: '전력요금',
 				data: [{{{toXAxis}}}]
 			}]
 		});
@@ -110,7 +130,6 @@
 			}]
 		});
 	});
-
 	</script>
 
 	<body>
@@ -126,74 +145,118 @@
                 <div id="chart02">그래프들어가는곳</div>
             </div><!-- half end-->
             <div class="recent">
-                <h2>거래예약</h2><span style="float:right;position:relative;margin-top:-38px;padding-right:7px"><button type="button">예약</button></span>
+                <h2>거래예약</h2><span style="float:right;position:relative;margin-top:-38px;padding-right:7px"><button type="button"  onclick="doRegist(); return false;">예약</button></span>
                 <ul>
-                    <li><span class="recent_t">이용자 ID</span><span class="text01">id</span></li>
+                    <li><span class="recent_t">이용자 ID</span><span><input type="text" id="userid" name="userid" style="width:400px"></span></li>
                     <li><span class="recent_t">거래장소</span>
-						<span class="options2">
+						<span>
 						<ul class="inputs2">
 							<li>
-								<select>
-									<option>시/도</option>
-									<option>시/도</option>
-									<option>시/도</option>
-								</select>
+							 <select name="place1" id="place1" onchange="categoryChangeReser(this)">
+				                <option value="">시/도</option>
+				                <option value="서울">서울</option>
+				                <option value="경기">경기</option>
+				                <option value="강원">강원</option>
+				                <option value="충청북도">충청북도</option>
+				                <option value="충청남도">충청남도</option>
+				                <option value="전라북도">전라북도</option>
+				                <option value="전라남도">전라남도</option>
+				                <option value="경상북도">경상북도</option>                
+				                <option value="경상남도">경상북도</option>                
+				                <option value="제주도">경상북도</option>                                
+				            </select>
 							</li>
 							<li>
-								<select>
-									<option>구/읍/면</option>
-									<option>구/읍/면</option>
-									<option>구/읍/면</option>
-								</select>
+							<select name="place2" id="place2">
+			                	<option value="">구/읍/면</option>
+			                </select>
 							</li>
-							<li><input type="text" placeholder="공동주택명" class="black"></li>
-							<li><button type="button">선택</button></li>
+							<li><input type="text" name="place3" id="place3" placeholder="공동주택명" class="black"></li>
 						</ul>
 						</span>
 					</li>
-					<li><span class="recent_t">거래시간</span><span class="text02">18:00</span></li>
-					<li><span class="recent_t ml20">거래종류</span><span class="text02"></span></li>
-                    <li><span class="recent_t">거래일자</span><span class="text02">2019.01.01</span></li>
-                    <li><span class="recent_t ml20">거래용량</span><span class="text02">1,000</span></li>
-                    <li><span class="recent_t">잔량</span><span class="text02">1,000</span></li>
-                    <li><span class="recent_t ml20">거래금액</span><span class="text02 green">250,000</span></li>
+					<li><span class="recent_t">거래시간</span><span>
+								<ul class="inputs2">
+									<li>
+										<select name="rtime1" id="rtime1">
+											<option value="">시간</option>
+											<option value="00">00</option>
+											<option value="01">01</option>
+											<option value="02">02</option>
+											<option value="03">03</option>
+											<option value="04">04</option>
+											<option value="05">05</option>
+											<option value="06">06</option>
+											<option value="07">07</option>
+											<option value="08">08</option>
+											<option value="09">09</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+											<option value="22">22</option>
+											<option value="23">23</option>
+										</select>
+									</li>
+									<li>
+										<select name="rtime2" id="rtime2">
+											<option value="">분</option>
+											<option value="00">00</option>
+											<option value="10">10</option>
+											<option value="20">20</option>
+											<option value="30">30</option>
+											<option value="40">40</option>
+											<option value="50">50</option>
+											
+										</select>
+									</li>
+								</ul>
+						</span></li>
+					<li><span class="recent_t">거래종류</span>
+						<span>
+								<ul class="inputs2">
+									<li>
+										<select name="rflag" id="rflag" style="width:20px">
+											<option value="V2G">V2G</option>
+											<option value="DR">DR</option>
+										</select>
+									</li>
+								</ul></span></li>
+                    <li><span class="recent_t">거래일자</span><span class="calendar_input"><input type="text" id="from1" style="width:50px"></span></li>
+                    <li><span class="recent_t ml20">거래용량</span><span><input name="relectirc" id="relectirc" type="text"></span></li>
+                    <li><span class="recent_t">잔량</span><span><input  name="rleft" id="rleft"  type="text"></span></li>
+                    <li><span class="recent_t ml20" style="padding-left:27px">거래금액</span><span><input  name="rcost" id="rcost"  type="text"></span></li>
                 </ul>
             </div><!-- recent end-->
             <div class="recent fr">
                 <h2>최근거래이력</h2>
                 <ul>
-					<li><span class="recent_t">이용자 ID</span><span class="text03">id</span>
-					<ul class="inputs2" style="float:right;margin-top:-67px"><li><button type="button">선택</button></li></ul></li>
+					<li><span class="recent_t">이용자 ID</span><span><input name="suserid" id="suserid" type="text" style="width:320px"></span>
+					<ul class="inputs2" style="float:right;margin-top:-67px"><li><button type="button" onclick="doSearch(); return false;">선택</button></li></ul></li>
 					<li><span class="recent_t">거래장소</span>
-						<span class="options2">
-						<ul class="inputs2">
-							<li>
-								<select>
-									<option>시/도</option>
-									<option>시/도</option>
-									<option>시/도</option>
-								</select>
-							</li>
-							<li>
-								<select>
-									<option>구/읍/면</option>
-									<option>구/읍/면</option>
-									<option>구/읍/면</option>
-								</select>
-							</li>
-							<li><input type="text" placeholder="공동주택명" class="black" style="width:200px"></li>
-						</ul>
+							<input name="slpace" id="slpace" type="text" readonly style="width:360px">
 						</span>
 					</li>
-                    <li><span class="recent_t">거래시간</span><span class="text02">18:00</span></li>
-					<li><span class="recent_t ml20">거래종류</span><span class="text02"></span></li>
-                    <li><span class="recent_t">거래일자</span><span class="text02">2019.01.01</span></li>
-                    <li><span class="recent_t ml20">거래용량</span><span class="text02">1,000</span></li>
-                    <li><span class="recent_t">누적용량</span><span class="text02">1,000</span></li>
-                    <li><span class="recent_t ml20">누적금액</span><span class="text02 green">250,000</span></li>
+                    <li><span class="recent_t">거래시간</span><span><input type="text" name="stime" id="stime" value="" readonly ></span></span></li>
+					<li><span class="recent_t ml20">거래종류</span><span><input type="text" name="sflag" id="sflag" value="" readonly ></span></span></li>
+                    <li><span class="recent_t">거래일자</span><span><input type="text" name="sdate" id="sdate" value="" readonly ></span></li>
+                    <li><span class="recent_t ml20">거래용량</span><span><input type="text" name="selectric" id="selectric" value="" readonly></span></li>
+                    <li><span class="recent_t">잔량</span><span><input type="text" name="sleft" id="sleft" value="" readonly ></span></li>
+                    <li><span class="recent_t ml20">거래금액</span><span><input type="text" name="scost" id="scost" value="" readonly ></span></li>
                 </ul>
             </div><!-- recent end-->
         </div><!-- boxes end-->
     </div><!-- wrap end-->
+	<!--custom js 추가-->
+    <script src="/js/app/reservation/reservation.js"></script>
+    <!--//custom js-->
 </body>    
 </html>

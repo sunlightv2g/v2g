@@ -1,90 +1,183 @@
-function userlogin(){
-	if($('#loginid').val().trim() == ""){
-		alert("아이디를 입력해주세요.");
-		$('#loginid').val("");
-		$('#loginid').focus();
-		return false;
-	}
-	if($('#loginpass').val().trim() == ""){
-		alert("비밀번호를 입력해주세요.");
-		$('#loginpass').val("");
-		$('#loginpass').focus();
-		return false;
-	}
-	
-    var data = {
-    		userid: $('#loginid').val(),
-    		userpass: $('#loginpass').val()
-    	};
-
-    $.ajax({
-        type: 'POST',
-        url: "/environment/userlogin",
-        dataType: 'text',
-        contentType:'application/json; charset=utf-8',
-        data: JSON.stringify(data)
-    }).done(function(data) {
-    	if(data < 1){
-    		alert("아이디 또는 비밀번호를 확인해주세요.");	
-    	}else{
-    		history.back("-1");
-    	}
-    	
-        //alert('등록되었습니다.');
-        
-        //routinecheck.list();
-    }).fail(function (error) {
-        alert(error);
-    });
-}
-
-function logout(){
-	$.ajax({
-		type: 'POST',
-		url: "/environment/userlogout",
-		dataType: 'text',
-		contentType:'application/json; charset=utf-8',
-	}).done(function(data) {
-		//alert(data);
-		location.reload();
-	}).fail(function (error) {
-		alert(error);
+$(document).ready(function(){
+  //gnb
+  $('#gnb').on({
+		'mouseenter focusin':function() {
+			$(".gnb_bg").addClass("on").stop().animate({"height":"300px"},10);
+			$("#gnb .depth2").stop().animate({"height":"360px"},10);
+			$("#gnb .depth2 > li").on("mouseenter focusin", function(){
+				$("#gnb .depth2 li").not(this).removeClass("on");
+				$(this).addClass("on");
+			});
+		},'mouseleave focusout':function(){
+			$("#gnb .depth2").stop().animate({"height":"61px"},10);
+			$("#gnb .depth2 li").removeClass("on");
+			$(".gnb_bg").removeClass("on").stop().animate({"height":"0"},50);
+		}
 	});
-	
-}
+  //layout
 
-function categoryChange(e) {
-	  var var_a = ["구/읍/면","강남구","은평구", "도봉구", "강북구", "노원구", "성북구", "서대문구", "종로구", "동대문구", "중구", "성동구", "마포구", "중량구", "강서구", "광진구", "양천구", "구로구", "영등포구", "용산구", "강동구", "금천구", "관악구", "동작구", "서초구", "송파구"];
-	  var var_b = ["구/읍/면"];
-	  var target = document.getElementById("gumyun");
-	 
-	  if(e.value == "서울") var d = var_a;
-	  else var d = var_b;
+  $(document).ready(function(){
+    var selectTarget = $('.search_select select');
+    selectTarget.on('blur', function(){
+        $(this).parent().removeClass('focus');
+    });
+    selectTarget.change(function(){
+        var select_name = $(this).children('option:selected').text();
+        $(this).siblings('label').text(select_name);
+    });
+});
 
-	  target.options.length = 0;
-	 
-	  for (x in d) {
-	    var opt = document.createElement("option");
-	    opt.value = d[x];
-	    opt.innerHTML = d[x];
-	    target.appendChild(opt);
-	  } 
-}
+	//select
+	var selectTarget = $('.search_select select');
+    selectTarget.on('blur', function(){
+        $(this).parent().removeClass('focus');
+    });
+    selectTarget.change(function(){
+        var select_name = $(this).children('option:selected').text();
+        $(this).siblings('label').text(select_name);
+    });
 
-function seachSubmit(){
-	var sido = $('#sido').val().trim();
-	var gumyun = $('#gumyun').val().trim();
-	var searchStr = $('#searchStr').val().trim();	
-	
-	if(sido == "서울" && gumyun == "구/읍/면" && searchStr == ""){
-		location.href="/seoul";
-	}else if(sido == "서울" && gumyun == "강남구" && searchStr == ""){
-		location.href="/location";
-	}else if(sido == "서울" && gumyun == "강남구" && searchStr == "도곡렉슬아파트"){
-		location.href="/apt";
-	}else{
-		alert("검색된 데이터가 없습니다.");
-	}
-	
-	
+    var selectTarget3 = $('.choice_select select');
+     selectTarget3.on('blur', function(){
+         $(this).parent().removeClass('focus');
+     });
+
+     // main tab
+    $(".main_tabCcontent").hide();
+    $(".main_tabCcontent:first").show();
+    $("#mainTab a").click(function(event) {
+        event.preventDefault(); //주소에 #숨김
+        $(this).parent().addClass("current");
+        $(this).parent().siblings().removeClass("current");
+        var tab = $(this).attr("href");
+        $(".main_tabCcontent").not(tab).css("display", "none");
+        $(tab).fadeIn();
+    });
+    // main tab
+   $(".main_tabCcontent2").hide();
+   $(".main_tabCcontent2:first").show();
+   $("#mainTab2 a").click(function(event) {
+       event.preventDefault(); //주소에 #숨김
+       $(this).parent().addClass("current");
+       $(this).parent().siblings().removeClass("current");
+       var tab = $(this).attr("href");
+       $(".main_tabCcontent2").not(tab).css("display", "none");
+       $(tab).fadeIn();
+   });
+    //sub tab1
+    $(".tab_content1").hide();
+    $(".tab_content1:first").show();
+    $("#tab1 a").click(function(event) {
+        event.preventDefault(); //주소에 #숨김
+        $(this).parent().addClass("current");
+        $(this).parent().siblings().removeClass("current");
+        var tab = $(this).attr("href");
+        $(".tab_content1").not(tab).css("display", "none");
+        $(tab).fadeIn();
+    });
+    //sub tab2
+    $(".tab_content2").hide();
+    $(".tab_content2:first").show();
+    $("#tab2 a").click(function(event) {
+        event.preventDefault(); //주소에 #숨김
+        $(this).parent().addClass("active");
+        $(this).parent().siblings().removeClass("active");
+        var tab = $(this).attr("href");
+        $(".tab_content2").not(tab).css("display", "none");
+        $(tab).fadeIn();
+    });
+});
+
+//loacation
+jQuery(function($){
+    // Common
+    var select_root = $('div.fake_select');
+    var select_value = $('.my_value');
+    var select_a = $('div.fake_select>ul>li>a');
+    var select_input = $('div.fake_select>ul>li>input[type=radio]');
+    var select_label = $('div.fake_select>ul>li>label');
+    // Radio Default Value
+    $('div.my_value').each(function(){
+        var default_value = $(this).next('.i_list').find('input[checked]').next('label').text();
+        $(this).append(default_value);          });
+
+    // Line
+    select_value.bind('focusin',function(){$(this).addClass('outLine');});
+    select_value.bind('focusout',function(){$(this).removeClass('outLine');});
+    select_input.bind('focusin',function(){$(this).parents('div.fake_select').children('div.my_value').addClass('outLine');});
+    select_input.bind('focusout',function(){$(this).parents('div.fake_select').children('div.my_value').removeClass('outLine');});
+    // Show
+    function show_option(){
+        $(this).parents('div.fake_select:first').toggleClass('open');
+    }
+    // Hover
+    function i_hover(){
+        $(this).parents('ul:first').children('li').removeClass('hover');
+        $(this).parents('li:first').toggleClass('hover');
+    }
+    // Hide
+    function hide_option(){
+        var t = $(this);
+        setTimeout(function(){
+            t.parents('div.fake_select:first').removeClass('open');
+        }, 1);
+    }
+    // Set Input
+    function set_label(){
+        var v = $(this).next('label').text();
+        $(this).parents('ul:first').prev('.my_value').text('').append(v);
+        $(this).parents('ul:first').prev('.my_value').addClass('selected');
+    }
+    // Set Anchor
+    function set_anchor(){
+        var v = $(this).text();
+        $(this).parents('ul:first').prev('.my_value').text('').append(v);
+        $(this).parents('ul:first').prev('.my_value').addClass('selected');
+    }
+    // Anchor Focus Out
+    $('*:not("div.fake_select a")').focus(function(){
+        $('.a_list').parent('.fake_select').removeClass('open');
+    });
+    select_value.click(show_option);
+    select_root.removeClass('open');
+    select_root.mouseleave(function(){$(this).removeClass('open');});
+    select_a.click(set_anchor).click(hide_option).focus(i_hover).hover(i_hover);
+    select_input.change(set_label).focus(set_label);
+    select_label.hover(i_hover).click(hide_option);
+});
+
+//popup
+function view_show(num) {
+    $("body").addClass("ofHidden"); // css로 body 스크롤 없애기
+    var left = (( $(window).width() - $("#dispay_view"+num).width()) / 2 );
+    var top = (( $(window).height() - $("#dispay_view"+num).height()) / 2 );
+    $("#dispay_view"+num).css({'left':left,'top':top, 'position':'fixed'});
+    document.getElementById("dispay_view"+num).style.display = "block";
+    document.getElementById("js-popup-bg").style.display = "block";
+    return false;
+ }
+function view_hide(num) {
+  $("body").removeClass("ofHidden");
+  document.getElementById("dispay_view"+num).style.display = "none";
+  document.getElementById("js-popup-bg").style.display = "none";
+  return false;
 }
+ 
+$(function(){
+    $('#js-popup-bg').click(function(){
+        $("body").removeClass("ofHidden");
+        $('.js-popup').css("display","none");
+        $(this).css("display","none");
+      });
+});
+ 
+// 팝업 드래그(jquery ui 파일이 연결되어 있어야함.)
+//$( ".dispay_view1" ).draggable();
+ 
+/*윈도우팝업 공통 class로 닫기 처리 - 닫기버튼에 window_close 추가*/
+$(function(){
+    $('.window_close').click(function(){
+        window.open('about:blank', '_self').close();
+    })
+});
+

@@ -47,10 +47,10 @@ public class Reservation extends BaseTimeEntity implements Serializable{
     private String relectirc;
     
     @Column(length = 255, nullable = true)
-    private String residual;
+    private String rleft;
     
     @Builder
-    public Reservation(long id, String userid, String place, String rdate, String rtime, String rflag, String rcost, String relectirc, String residual) {
+    public Reservation(long id, String userid, String place, String rdate, String rtime, String rflag, String rcost, String relectirc, String rleft) {
     	this.id = id;
     	this.userid = userid;
         this.place = place;
@@ -59,6 +59,6 @@ public class Reservation extends BaseTimeEntity implements Serializable{
         this.rflag = rflag;
         this.rcost = rcost;
         this.relectirc = relectirc;
-        this.residual = residual;
+        this.rleft = rleft;
     }
 }

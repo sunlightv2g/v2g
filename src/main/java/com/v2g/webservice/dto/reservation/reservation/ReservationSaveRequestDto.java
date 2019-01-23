@@ -24,11 +24,11 @@ public class ReservationSaveRequestDto implements Serializable{
 	private String rflag;
 	private String rcost;
 	private String relectirc;
-	private String residual;
+	private String rleft;
 	private String usersms;
 
     @Builder
-    public ReservationSaveRequestDto(long id, String userid, String place, String rdate, String rtime, String rflag, String rcost, String relectirc, String residual) {
+    public ReservationSaveRequestDto(long id, String userid, String place, String rdate, String rtime, String rflag, String rcost, String relectirc, String rleft) {
     	this.id = id;
     	this.userid = userid;
         this.place = place;
@@ -37,7 +37,7 @@ public class ReservationSaveRequestDto implements Serializable{
         this.rflag = rflag;
         this.rcost = rcost;
         this.relectirc = relectirc;
-        this.residual = residual;
+        this.rleft = rleft;
     }
     
     
@@ -51,7 +51,7 @@ public class ReservationSaveRequestDto implements Serializable{
                 .rflag(rflag)
                 .rcost(rcost)
                 .relectirc(relectirc)
-                .residual(residual)
+                .rleft(rleft)
                 .build();
     }
 }
