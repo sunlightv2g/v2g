@@ -38,6 +38,14 @@ img {line-height:0; font-size:0; border:0; max-width:100%; -ms-interpolation-mod
 .inputs li input.black {height:40px; padding:0 10px; font-size: 18px; color: #fff; border: 1px solid #4b494b;  border-radius: 5px; background:#000; font-weight:600; text-align: center; width:170px}
 .inputs li > button {width:85px; height:42px; background: #0e4a74; color:#fff; font-size:18px; border:0; border-radius: 5px; font-weight: 600}
 
+.options2 {position: relative; height:55px; margin-bottom: 7px; clear:both;}
+.inputs2 {float:left; margin-top:-19px;margin-left:-19px}
+.inputs2 li {float:left; margin-left:7px;}
+.inputs2 li input.black {height:40px; padding:0 10px; font-size: 16px; color: #fff; border: 1px solid #4b494b;  border-radius: 5px; background:#000; font-weight:600; text-align: center; width:50px}
+.inputs2 select {min-width:92px; height:42px; padding:0 10px; font-size: 16px;color: #fff; border: 1px solid #4b494b;  border-radius: 5px;  -webkit-appearance: none; -moz-appearance: none; appearance: none; background: url('../img/select_arrow.png') no-repeat 90% 50% #000; font-weight:600; }
+.inputs2 li > button {width:75px; height:42px; background: #0e4a74; color:#fff; font-size:18px; border:0; border-radius: 5px; font-weight: 600}
+
+
 .buttons {float:right; margin:9px 7px 0 0; font-family: 'Nanum Gothic'}
 .buttons li {float:left; margin-left:5px; background: url(../img/btn_bg_off.png) no-repeat; width:140px; height:42px;}
 .buttons li a {display: block; height:42px; line-height: 42px; text-align: center; color:#fff; font-size:17px; font-weight:600; letter-spacing: 0.5px;}
@@ -156,15 +164,18 @@ h3 span {font-size:12px; font-weight: 400; margin-left:5px}
 .half.book {height:380px; padding:0;}
 .book > div {text-align: center; font-size:14px; color:#fff; height:320px; padding:5px}
 
-.recent {float:left; position:relative; background:url(../img/book_bg.png) no-repeat 0 0; width:613px; height:282px; margin-bottom:20px}
+.recent {float:left; position:relative; background:url(../img/book_bg2.png) no-repeat 0 0; width:613px; height:322px; margin-bottom:20px}
 .recent ul {padding:20px 30px;}
 .recent ul li {float:left; font-size:18px; font-weight:600; color:#fff; height:40px; line-height:40px; margin-bottom:10px}
 .recent_t {float:left; height:40px; line-height: 40px; width:80px; font-family: 'Nanum Gothic'}
 .recent ul li span.text01 {display:inline-block; width:428px;height:40px; line-height: 40px; background: url(../img/book_txt01.png) no-repeat 0 0; margin-left:20px; padding:0 10px; color:#ffcc00; font-size:24px;}
 .recent ul li span.text02 {display:inline-block; width:133px;height:40px; line-height: 40px; background: url(../img/book_txt02.png) no-repeat 0 0; margin-left:20px; padding:0 10px; color:#ffcc00; font-size:24px; text-align: right}
+.recent ul li span.text03 {display:inline-block; width:359px;height:40px; line-height: 40px; background: url(../img/book_txt03.png) no-repeat 0 0; margin-left:20px; padding:0 10px; color:#ffcc00; font-size:24px;}
 .ml20 {margin-left:40px;}
 .recent ul li span.text02.small {font-size:18px; font-weight: 400}
 .recent ul li span.text02.green {color:#02ee87}
+.recent button {width:70px; height:28px; background: #0070cc; color:#fff; font-size:16px; border:0; border-radius: 5px; font-weight: 600}
+
 
 /*통계분석*/
 .stats {height:100%;}

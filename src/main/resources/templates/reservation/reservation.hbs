@@ -119,7 +119,7 @@
 	<body>
         <div class="wrap">
         	{{>include/gnb}}
-        <div class="boxes">
+        	<div class="boxes">
             <div class="half book">
                 <h2>금일전력요금</h2>
                 <div id="chart01">11그래프들어가는곳</div>
@@ -129,26 +129,71 @@
                 <div id="chart02">그래프들어가는곳</div>
             </div><!-- half end-->
             <div class="recent">
-                <h2>최근거래이력</h2>
+                <h2>거래예약</h2><span style="float:right;position:relative;margin-top:-38px;padding-right:7px"><button type="button">예약</button></span>
                 <ul>
                     <li><span class="recent_t">이용자 ID</span><span class="text01">id</span></li>
-                    <li><span class="recent_t">거래장소</span><span class="text02"></span></li>
-                    <li><span class="recent_t ml20">보유용량</span><span class="text02">228,956</span></li>
-                    <li><span class="recent_t">거래종류</span><span class="text02"></span></li>
-                    <li><span class="recent_t ml20">거래시간</span><span class="text02 small">2019.01.01 18:00</span></li>
-                    <li><span class="recent_t">거리용량</span><span class="text02">1,000</span></li>
+                    <li><span class="recent_t">거래장소</span>
+						<span class="options2">
+						<ul class="inputs2">
+							<li>
+								<select>
+									<option>시/도</option>
+									<option>시/도</option>
+									<option>시/도</option>
+								</select>
+							</li>
+							<li>
+								<select>
+									<option>구/읍/면</option>
+									<option>구/읍/면</option>
+									<option>구/읍/면</option>
+								</select>
+							</li>
+							<li><input type="text" placeholder="공동주택명" class="black"></li>
+							<li><button type="button">선택</button></li>
+						</ul>
+						</span>
+					</li>
+					<li><span class="recent_t">거래시간</span><span class="text02">18:00</span></li>
+					<li><span class="recent_t ml20">거래종류</span><span class="text02"></span></li>
+                    <li><span class="recent_t">거래일자</span><span class="text02">2019.01.01</span></li>
+                    <li><span class="recent_t ml20">거래용량</span><span class="text02">1,000</span></li>
+                    <li><span class="recent_t">잔량</span><span class="text02">1,000</span></li>
                     <li><span class="recent_t ml20">거래금액</span><span class="text02 green">250,000</span></li>
                 </ul>
             </div><!-- recent end-->
             <div class="recent fr">
                 <h2>최근거래이력</h2>
                 <ul>
-                    <li><span class="recent_t">거래장소</span><span class="text02"></span></li>
-                    <li><span class="recent_t ml20">거래종류</span><span class="text02"></span></li>
-                    <li><span class="recent_t">거래용량</span><span class="text02">1,235</span></li>
-                    <li><span class="recent_t ml20">거래금액</span><span class="text02">350,000</span></li>
-                    <li><span class="recent_t">누적용량</span><span class="text02">23,256</span></li>
-                    <li><span class="recent_t ml20">누적금액</span><span class="text02 green">6,550,000</span></li>
+					<li><span class="recent_t">이용자 ID</span><span class="text03">id</span>
+					<ul class="inputs2" style="float:right;margin-top:-67px"><li><button type="button">선택</button></li></ul></li>
+					<li><span class="recent_t">거래장소</span>
+						<span class="options2">
+						<ul class="inputs2">
+							<li>
+								<select>
+									<option>시/도</option>
+									<option>시/도</option>
+									<option>시/도</option>
+								</select>
+							</li>
+							<li>
+								<select>
+									<option>구/읍/면</option>
+									<option>구/읍/면</option>
+									<option>구/읍/면</option>
+								</select>
+							</li>
+							<li><input type="text" placeholder="공동주택명" class="black" style="width:200px"></li>
+						</ul>
+						</span>
+					</li>
+                    <li><span class="recent_t">거래시간</span><span class="text02">18:00</span></li>
+					<li><span class="recent_t ml20">거래종류</span><span class="text02"></span></li>
+                    <li><span class="recent_t">거래일자</span><span class="text02">2019.01.01</span></li>
+                    <li><span class="recent_t ml20">거래용량</span><span class="text02">1,000</span></li>
+                    <li><span class="recent_t">누적용량</span><span class="text02">1,000</span></li>
+                    <li><span class="recent_t ml20">누적금액</span><span class="text02 green">250,000</span></li>
                 </ul>
             </div><!-- recent end-->
         </div><!-- boxes end-->
