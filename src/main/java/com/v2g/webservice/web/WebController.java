@@ -18,12 +18,14 @@ import com.v2g.webservice.dto.environment.userinfo.UserinfoMainResponseDto;
 import com.v2g.webservice.dto.environment.userinfo.UserinfoSearchRequestDto;
 import com.v2g.webservice.dto.main.maindata.MainDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
+import com.v2g.webservice.dto.reservation.reservation.ReservationResponseDto;
 import com.v2g.webservice.dto.trade.trade.TradeResponseDto;
 import com.v2g.webservice.dto.trade.trade.TradeSearchRequestDto;
 import com.v2g.webservice.service.analysis.AnalysisService;
 import com.v2g.webservice.service.customer.CustomerService;
 import com.v2g.webservice.service.environment.UserinfoService;
 import com.v2g.webservice.service.main.MaindataService;
+import com.v2g.webservice.service.reservation.ReservationService;
 import com.v2g.webservice.service.trade.TradeService;
 
 import lombok.AllArgsConstructor;
@@ -37,6 +39,7 @@ public class WebController {
 	private MaindataService maindataService;
 	private TradeService tradeService;	
 	private AnalysisService analysisService;	
+	private ReservationService reservationService;	
 	
     @GetMapping("/")
     public String main(Model model) {
@@ -481,6 +484,31 @@ public class WebController {
     	
     	MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
    		model.addAttribute("centerdata", mainCenterDataResponseDto);
+   		List<ReservationResponseDto> reservationResponseDtoList = reservationService.getTodayCost();
+   		
+   		String toYAxisp = "";
+   		String toXAxis = "";
+   		
+   		for(ReservationResponseDto reservationResponseDto : reservationResponseDtoList) {
+   			toYAxisp += "'" + addZero(reservationResponseDto.getTimeflag()) + "',";
+   			toXAxis += reservationResponseDto.getVcost() + ",";
+   		}
+   		
+   		model.addAttribute("toYAxisp", toYAxisp);
+   		model.addAttribute("toXAxis", toXAxis);
+   		
+   		List<ReservationResponseDto> reservationResponseDtoHistoryList = reservationService.getTradeHistory();
+   		
+   		String toVcost = "";
+   		String toVelectric = "";
+   		
+   		for(ReservationResponseDto reservationResponseDto : reservationResponseDtoHistoryList) {
+   			toVcost += reservationResponseDto.getVcost() + ",";
+   			toVelectric += reservationResponseDto.getVelectric() + ",";
+   		}
+   		
+   		model.addAttribute("toVcost", toVcost);
+   		model.addAttribute("toVelectric", toVelectric);
    		
     	return "reservation/reservation";
     }
