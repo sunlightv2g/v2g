@@ -201,7 +201,7 @@ h3 span {font-size:12px; font-weight: 400; margin-left:5px}
 .car dl {position:relative; width:193px; height:126px; padding:5px 10px; background:#2d2d2d; border:1px solid #666666; margin-bottom:12px;}
 .car dl dt {background: url(../img/apt_car.png) no-repeat center 3px; font-size:14px; color:#fff; padding:52px 30px 0 30px}
 .car dl dt .dot {display:inline-block;  margin:4px; width:5px; height:5px; background: #fff; border-radius: 50%; }
-.car dl dd {font-size:14px; color:#000; padding:5px 9px; border-radius: 5px; line-height: 14px; height:14px;}
+.car dl dd {font-size:12px; color:#000; padding:5px 9px; border-radius: 5px; line-height: 14px; height:14px;}
 .car dl dd.sky {position:absolute; bottom: 10px; left:15px; background: #33ccff}
 .car dl dd.yellow {position:absolute; bottom: 10px; right:15px; background: #ffcc33}
 
