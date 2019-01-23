@@ -6,7 +6,7 @@
 	<body>
         <div class="wrap">
         	{{>include/gnb}}
-        <div class="boxes">
+        	<div class="boxes">
             <div class="long"><h2>도곡렉슬아파트</h2></div>
             <div class="apt">
                 <ul class="colors">
@@ -17,124 +17,132 @@
                     <li><span class="color"></span><span class="about">통신불량</span></li>
                 </ul>
                 <ul class="sum">
-                    <li>금일:<span>8,470</span>kwh</li>
-                    <li>누적:<span>823,450</span>kwh</li>
+                    <li>금일:<span>{{formatStringNumber Allelectric}}</span>kwh</li>
+                    <li><span>{{formatStringNumber Allcost}}</span>원</li>
                 </ul>
                 <div class="car">
                     <dl>
-                        <dt><span class="dot"></span>고객번호 : A001<br/><span class="dot"></span>고객번호 : A001</dt>
-                        <dd class="sky">잔량 : 65%</dd>
-                        <dd class="yellow">예약 : 40%</dd>
+                        <dt><span class="dot"></span>고객번호 : {{A1User.userid}}</dt>
+                        <dd class="sky">잔량 : {{A1User.vleft}}</dd>
+                        <dd class="yellow">예약 : {{A1User.vreservation}}%</dd>
                     </dl>
                     <dl>
-                        <dt><span class="dot"></span>고객번호 : A001<br/><span class="dot"></span>고객번호 : A001</dt>
-                        <dd class="sky">잔량 : 65%</dd>
-                        <dd class="yellow">예약 : 40%</dd>
+	                    <dt><span class="dot"></span>고객번호 : {{A1User.userid}}</dt>
+	                    <dd class="sky">잔량 : {{A2User.vleft}}</dd>
+	                    <dd class="yellow">예약 : {{A2User.vreservation}}%</dd>
                     </dl>
                     <dl>
-                        <dt><span class="dot"></span>고객번호 : A001<br/><span class="dot"></span>고객번호 : A001</dt>
-                        <dd class="sky">잔량 : 65%</dd>
-                        <dd class="yellow">예약 : 40%</dd>
+	                    <dt><span class="dot"></span>고객번호 : {{A3User.userid}}</dt>
+	                    <dd class="sky">잔량 : {{A3User.vleft}}</dd>
+	                    <dd class="yellow">예약 : {{A3User.vreservation}}%</dd>
                     </dl>
                     <dl>
-                        <dt><span class="dot"></span>고객번호 : A001<br/><span class="dot"></span>고객번호 : A001</dt>
-                        <dd class="sky">잔량 : 65%</dd>
-                        <dd class="yellow">예약 : 40%</dd>
+	                    <dt><span class="dot"></span>고객번호 : {{A4User.userid}}</dt>
+	                    <dd class="sky">잔량 : {{A4User.vleft}}</dd>
+	                    <dd class="yellow">예약 : {{A4User.vreservation}}%</dd>
                     </dl>
                 </div><!-- car end-->
                 <ul class="arrows">
                     <li>금일V2G
-                        <span>234 kWh<br/>134,000원</span>
+                        <span>{{formatStringNumber A1User.vcost}} kWh<br/>{{formatStringNumber A1User.velectric}}원</span>
                         <span class="color red"></span>
                     </li>
                     <li>금일V2G
-                        <span>234 kWh<br/>134,000원</span>
-                        <span class="color skyblue"></span>
+	                    <span>{{formatStringNumber A2User.vcost}} kWh<br/>{{formatStringNumber A2User.velectric}}원</span>
+	                    <span class="color red"></span>
                     </li>
                     <li>금일V2G
-                        <span>234 kWh<br/>134,000원</span>
-                        <span class="color gray"></span>
+	                    <span>{{formatStringNumber A3User.vcost}} kWh<br/>{{formatStringNumber A3User.velectric}}원</span>
+	                    <span class="color red"></span>
                     </li>
                     <li>금일V2G
-                        <span>234 kWh<br/>134,000원</span>
-                        <span class="color purple"></span>
+	                    <span>{{formatStringNumber A4User.vcost}} kWh<br/>{{formatStringNumber A4User.velectric}}원</span>
+	                    <span class="color red"></span>
                     </li>
                 </ul>
                 <div class="building">
                     <h4>건물_A</h4>
                     <ul class="bd">
-                        <li><span class="num">4,235</span>kWh</li>
-                        <li><span class="num">2,550</span>천원</li>
+                        <li><span class="num">{{formatStringNumber Aelectric}}</span>kWh</li>
+                        <li><span class="num">{{formatStringNumber Acost}}</span>천원</li>
                     </ul>
                     <div class="battery">
                         <p class="top_cell"></p>
                         <ul>
-                            <li>blank</li>
-                            <li>blank</li>
-                            <li>blank</li>
-                            <li class="on">blank</li>
-                            <li class="on">blank</li>
+                            <li style="vertical-align:bottom;display:table-cell;"><img src="img/bat_line.png" width="164px" height="{{Ahight}}px" ></li>
                         </ul>
-                        <p>40%<span>ESS SOC</span></p>
+                        <p>INVERTER<span>ESS SYSTEM</span></p>
+						<div class="car2">
+							<dl>
+							<dt><span class="dot"></span>입력전압: {{A1data}} V<br/>
+							<span class="dot"></span>충전용량: {{A2data}} KWh (1MWh)<br/>
+							<span class="dot"></span>BATT SOC: {{A3data}} %<br/>
+							<span class="dot"></span>출력전압: {{A4data}} V</dt>
+							</dl>
+						</div>
                     </div>
                 </div>
                 
                 <div class="car">
                     <dl>
-                        <dt><span class="dot"></span>고객번호 : A001<br/><span class="dot"></span>고객번호 : A001</dt>
-                        <dd class="sky">잔량 : 65%</dd>
-                        <dd class="yellow">예약 : 40%</dd>
+	                    <dt><span class="dot"></span>고객번호 : {{B1User.userid}}</dt>
+	                    <dd class="sky">잔량 : {{B1User.vleft}}</dd>
+	                    <dd class="yellow">예약 : {{B1User.vreservation}}%</dd>
                     </dl>
                     <dl>
-                        <dt><span class="dot"></span>고객번호 : A001<br/><span class="dot"></span>고객번호 : A001</dt>
-                        <dd class="sky">잔량 : 65%</dd>
-                        <dd class="yellow">예약 : 40%</dd>
+	                    <dt><span class="dot"></span>고객번호 : {{B2User.userid}}</dt>
+	                    <dd class="sky">잔량 : {{B2User.vleft}}</dd>
+	                    <dd class="yellow">예약 : {{B2User.vreservation}}%</dd>
                     </dl>
                     <dl>
-                        <dt><span class="dot"></span>고객번호 : A001<br/><span class="dot"></span>고객번호 : A001</dt>
-                        <dd class="sky">잔량 : 65%</dd>
-                        <dd class="yellow">예약 : 40%</dd>
+	                    <dt><span class="dot"></span>고객번호 : {{B3User.userid}}</dt>
+	                    <dd class="sky">잔량 : {{B3User.vleft}}</dd>
+	                    <dd class="yellow">예약 : {{B3User.vreservation}}%</dd>
                     </dl>
                     <dl>
-                        <dt><span class="dot"></span>고객번호 : A001<br/><span class="dot"></span>고객번호 : A001</dt>
-                        <dd class="sky">잔량 : 65%</dd>
-                        <dd class="yellow">예약 : 40%</dd>
+	                    <dt><span class="dot"></span>고객번호 : {{B4User.userid}}</dt>
+	                    <dd class="sky">잔량 : {{B4User.vleft}}</dd>
+	                    <dd class="yellow">예약 : {{B4User.vreservation}}%</dd>
                     </dl>
                 </div><!-- car end-->
                 <ul class="arrows">
-                    <li>금일V2G
-                        <span>234 kWh<br/>134,000원</span>
-                        <span class="color red"></span>
-                    </li>
-                    <li>금일V2G
-                        <span>234 kWh<br/>134,000원</span>
-                        <span class="color skyblue"></span>
-                    </li>
-                    <li>금일V2G
-                        <span>234 kWh<br/>134,000원</span>
-                        <span class="color gray"></span>
-                    </li>
-                    <li>금일V2G
-                        <span>234 kWh<br/>134,000원</span>
-                        <span class="color purple"></span>
-                    </li>
+                <li>금일V2G
+	                <span>{{formatStringNumber B1User.vcost}} kWh<br/>{{formatStringNumber B1User.velectric}}원</span>
+	                <span class="color red"></span>
+	            </li>
+	            <li>금일V2G
+	                <span>{{formatStringNumber B2User.vcost}} kWh<br/>{{formatStringNumber B2User.velectric}}원</span>
+	                <span class="color red"></span>
+	            </li>
+	            <li>금일V2G
+	                <span>{{formatStringNumber B3User.vcost}} kWh<br/>{{formatStringNumber B3User.velectric}}원</span>
+	                <span class="color red"></span>
+	            </li>
+	            <li>금일V2G
+	                <span>{{formatStringNumber B4User.vcost}} kWh<br/>{{formatStringNumber B4User.velectric}}원</span>
+	                <span class="color red"></span>
+	            </li>
                 </ul>
                 <div class="building fr">
                     <h4>건물_B</h4>
                     <ul class="bd">
-                        <li><span class="num">4,235</span>kWh</li>
-                        <li><span class="num">2,550</span>천원</li>
+                        <li><span class="num">{{formatStringNumber Belectric}}</span>kWh</li>
+                        <li><span class="num">{{formatStringNumber Bcost}}</span>천원</li>
                     </ul>
                     <div class="battery">
                         <p class="top_cell"></p>
                         <ul>
-                            <li>blank</li>
-                            <li class="on">blank</li>
-                            <li class="on">blank</li>
-                            <li class="on">blank</li>
-                            <li class="on">blank</li>
+                            <li <li style="vertical-align:bottom;display:table-cell;"><img src="img/bat_line.png" width="164px" height="{{Bhight}}px"></li>
                         </ul>
-                        <p>80%<span>ESS SOC</span></p>
+                        <p>INVERTER<span>ESS SYSTEM</span></p>
+						<div class="car2">
+							<dl>
+							<dt><span class="dot"></span>입력전압: {{B1data}} V<br/>
+							<span class="dot"></span>충전용량: {{B2data}} KWh (1MWh)<br/>
+							<span class="dot"></span>BATT SOC: {{B3data}} %<br/>
+							<span class="dot"></span>출력전압: {{B4data}} V</dt>
+							</dl>
+						</div>
                     </div>
                 </div>
             </div><!-- apt end-->

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.v2g.webservice.domain.main.maindata.MaindataRepository;
+import com.v2g.webservice.dto.main.maindata.MainBateryResponseDto;
 import com.v2g.webservice.dto.main.maindata.MainDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataMainResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
@@ -53,6 +54,11 @@ public class MaindataService {
     @Transactional(readOnly = true)
     public List<MainDataResponseDto> getMainDataTable(MaindataSearchRequestDto maindataSearchRequestDto) {
     	return maindataRepository.getMainDataTable(maindataSearchRequestDto);
+    }
+    
+    @Transactional(readOnly = true)
+    public List<MainBateryResponseDto> getBateryDataTable(MaindataSearchRequestDto maindataSearchRequestDto) {
+    	return maindataRepository.getBateryDataTable(maindataSearchRequestDto);
     }
     
     @Transactional(readOnly = true)

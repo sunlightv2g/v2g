@@ -16,6 +16,7 @@ import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport
 import org.springframework.stereotype.Repository;
 
 import com.querydsl.jpa.JPQLQuery;
+import com.v2g.webservice.dto.main.maindata.MainBateryResponseDto;
 import com.v2g.webservice.dto.main.maindata.MainDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataMainResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
@@ -62,6 +63,10 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
 				query += ",round(vaccure * 0.001,1) as vaccure ";
 				query += ",carcnt ";
 				query += ",location ";
+				query += ", '' as vr​esidual ";
+				query += ", '' as vreservation ";
+				query += ", '' as building ";
+				query += ", '' as userid ";
 				query += "from ";
 				query += " maindata ";
 				break;
@@ -72,6 +77,10 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
 				query += ",round(vaccure,1) as vaccure ";
 				query += ",carcnt ";
 				query += ",location ";
+				query += ", '' as vr​esidual ";
+				query += ", '' as vreservation ";
+				query += ", '' as building ";
+				query += ", '' as userid ";
 				query += "from ";
 				query += " seoul ";
 				break;				
@@ -82,8 +91,26 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
 				query += ",round(vaccure,1) as vaccure ";
 				query += ",carcnt ";
 				query += ",location ";
+				query += ", '' as vr​esidual ";
+				query += ", '' as vreservation ";
+				query += ", '' as building ";
+				query += ", '' as userid ";
 				query += "from ";
 				query += " location ";
+				break;
+			case "apt":
+				query += " '' as vcar ";
+				query += ",vcost ";
+				query += ",velectric ";
+				query += ",vaccure ";
+				query += ", '' as carcnt ";
+				query += ", '' as location ";
+				query += ",vr​esidual ";
+				query += ",vreservation ";
+				query += ",building ";
+				query += ",userid ";
+				query += "from ";
+				query += " aptdata ";
 				break;
 			
 			}
@@ -107,10 +134,48 @@ public class MaindataRepositoryImpl extends QueryDslRepositorySupport implements
     	   mainDataResponseDto.setVaccure(String.valueOf(obj[3]));
     	   mainDataResponseDto.setCarcnt(String.valueOf(obj[4]));
     	   mainDataResponseDto.setLocation(String.valueOf(obj[5]));
+    	   mainDataResponseDto.setVleft(String.valueOf(obj[6]));
+    	   mainDataResponseDto.setVreservation(String.valueOf(obj[7]));
+    	   mainDataResponseDto.setBuilding(String.valueOf(obj[8]));
+    	   mainDataResponseDto.setUserid(String.valueOf(obj[9]));
     	   mainDataResponseDtoList.add(mainDataResponseDto);
     	}
    	
     	return mainDataResponseDtoList;
+    	
+    }
+    
+    @Override
+    public List<MainBateryResponseDto> getBateryDataTable(MaindataSearchRequestDto maindataSearchRequestDto) {
+    	
+    	String tbName = maindataSearchRequestDto.getTablename();
+//	    Query q = entityManager.createNativeQuery("SELECT a.firstname, a.lastname FROM Author a WHERE a.id = :id");
+    	String query = "select "; 
+		query += " building ";
+		query += ",flag ";
+		query += ",vdata ";
+		query += "from ";
+		query += " baterydata ";
+    	query += "where dayflag = :dayflag ";
+    	
+    	System.out.println(query);
+    	Query q = entityManager.createNativeQuery(query);
+    	q.setParameter("dayflag", maindataSearchRequestDto.getDayflag());
+    	List<Object> result = (List<Object>) q.getResultList();
+    	
+    	List<MainBateryResponseDto> mainBateryResponseDtoList = new ArrayList<MainBateryResponseDto>();
+    	Iterator itr = result.iterator();
+    	while(itr.hasNext()){
+    		MainBateryResponseDto mainBateryResponseDto = new MainBateryResponseDto();
+    		Object[] obj = (Object[]) itr.next();
+    		
+    		mainBateryResponseDto.setBuilding(String.valueOf(obj[0]));
+    		mainBateryResponseDto.setFlag(String.valueOf(obj[1]));
+    		mainBateryResponseDto.setVdata(String.valueOf(obj[2]));
+    		mainBateryResponseDtoList.add(mainBateryResponseDto);
+    	}
+    	
+    	return mainBateryResponseDtoList;
     	
     }
     

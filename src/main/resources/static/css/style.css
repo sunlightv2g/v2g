@@ -205,6 +205,14 @@ h3 span {font-size:12px; font-weight: 400; margin-left:5px}
 .car dl dd.sky {position:absolute; bottom: 10px; left:15px; background: #33ccff}
 .car dl dd.yellow {position:absolute; bottom: 10px; right:15px; background: #ffcc33}
 
+.car2 {position: relative; float:left; margin-right:5px;}
+.car2 dl {position:relative; width:200px;background:#2d2d2d; margin-bottom:12px;}
+.car2 dl dt {font-size:12px; color:#fff; padding-top:10px}
+.car2 dl dt .dot {display:inline-block;  margin:4px; width:5px; height:5px; background: #fff; border-radius: 50%; }
+.car2 dl dd {font-size:14px; color:#000; padding:5px 9px; border-radius: 5px; line-height: 14px; height:14px;}
+.car2 dl dd.sky {position:absolute; bottom: 10px; left:15px; background: #33ccff}
+.car2 dl dd.yellow {position:absolute; bottom: 10px; right:15px; background: #ffcc33}
+
 .arrows {float:left;}
 .arrows li {width:120px; height:98px; padding-top:40px; position:relative; background:url(../img/apt_arrow.png) no-repeat 0 110px; margin-bottom:12px; font-size:14px; color:#fff; line-height:18px; text-align: center;}
 .arrows li > span {display:block; color:#ffcc00; font-weight:600; }
@@ -212,17 +220,17 @@ h3 span {font-size:12px; font-weight: 400; margin-left:5px}
 
 .building {float:left; position:relative; width:245px; height:590px; border:1px solid #666; background:#2d2d2d; margin-right:46px}
 .building h4 {height:55px; line-height: 55px; background: #0066cc; color:#fff; font-weight: 600; font-size:18px; text-align: center}
-.building .bd {margin:45px 25px 60px 25px;}
+.building .bd {margin:25px 25px 40px 25px;}
 .building .bd li {font-size:14px; font-weight: 600; color:#fff; margin-bottom:20px;}
 .building .bd li .num {display: inline-block; background: url(../img/book_txt02.png) no-repeat 0 0; width:133px; height:39px; line-height:39px; margin-right:10px; font-size:24px; padding:0 10px; text-align: right;}
 .building.fr {margin-right:0}
 
 .battery {width:164px; margin:0 auto; position: relative}
 .battery .top_cell {background:#336600; width:32px; height:12px; margin-left:68px; margin-top:0;}
-.battery ul li {height:32px; background: #cccccc; margin-bottom: 1px; text-indent: -9999px}
+.battery ul li {height:200px; background: #cccccc; margin-bottom: 1px;}
 .battery ul li.on {background:#66ff00}
-.battery > p {color:#66ff00; font-size:36px; font-weight: 600; line-height: 26px; text-align: center; margin-top:30px;}
-.battery > p > span {display:block; font-size:18px;}
+.battery > p {color:#fff; font-size:24px; font-weight: 600; line-height: 26px; text-align: center; margin-top:10px;}
+.battery > p > span {display:block; font-size:18px;color:#66ff00;}
 
 /*고객기준, 환경설정*/
 .mb0 {margin-bottom:0; clear:both;}

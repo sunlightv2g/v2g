@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.v2g.webservice.dto.main.maindata.MainBateryResponseDto;
 import com.v2g.webservice.dto.main.maindata.MainDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataMainResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
@@ -16,5 +17,5 @@ public interface MaindataCustom {
     MainDataResponseDto getMainCenterData(MaindataSearchRequestDto maindataSearchRequestDto);
 	/*long update(Maindata entity);*/
     List<MainDataResponseDto> getMainDataTable(MaindataSearchRequestDto maindataSearchRequestDto);
-    
+    List<MainBateryResponseDto> getBateryDataTable(MaindataSearchRequestDto maindataSearchRequestDto);
 }

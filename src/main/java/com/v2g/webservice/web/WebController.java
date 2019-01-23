@@ -16,6 +16,7 @@ import com.v2g.webservice.dto.customer.customer.CustomerMainResponseDto;
 import com.v2g.webservice.dto.customer.customer.CustomerSearchRequestDto;
 import com.v2g.webservice.dto.environment.userinfo.UserinfoMainResponseDto;
 import com.v2g.webservice.dto.environment.userinfo.UserinfoSearchRequestDto;
+import com.v2g.webservice.dto.main.maindata.MainBateryResponseDto;
 import com.v2g.webservice.dto.main.maindata.MainDataResponseDto;
 import com.v2g.webservice.dto.main.maindata.MaindataSearchRequestDto;
 import com.v2g.webservice.dto.reservation.reservation.ReservationResponseDto;
@@ -197,6 +198,191 @@ public class WebController {
     	
 		MainDataResponseDto mainCenterDataResponseDto = maindataService.getMainCenterData(maindataSearchRequestDto);
 		model.addAttribute("centerdata", mainCenterDataResponseDto);
+		
+		maindataSearchRequestDto.setDayflag(mainCenterDataResponseDto.getDayflag());
+		maindataSearchRequestDto.setTablename("apt");
+		
+		List<MainDataResponseDto> mainDataResponseDtoList = maindataService.getMainDataTable(maindataSearchRequestDto);
+		
+		MainDataResponseDto A1User = new MainDataResponseDto();
+		MainDataResponseDto A2User = new MainDataResponseDto();
+		MainDataResponseDto A3User = new MainDataResponseDto();
+		MainDataResponseDto A4User = new MainDataResponseDto();
+		
+		double Acost = 0;
+		double Aelectric = 0;
+		
+		MainDataResponseDto B1User = new MainDataResponseDto();
+		MainDataResponseDto B2User = new MainDataResponseDto();
+		MainDataResponseDto B3User = new MainDataResponseDto();
+		MainDataResponseDto B4User = new MainDataResponseDto();
+		
+		double Bcost = 0;
+		double Belectric = 0;
+		
+		double Allcost = 0;
+		double Allelectric = 0;
+		
+		for(MainDataResponseDto mainDataResponseDto : mainDataResponseDtoList) {
+			
+			Allcost += Double.parseDouble(mainDataResponseDto.getVcost());
+			Allelectric += Double.parseDouble(mainDataResponseDto.getVelectric());
+			
+			if(mainDataResponseDto.getBuilding().equals("A")) {
+				Acost += Double.parseDouble(mainDataResponseDto.getVcost());
+				Aelectric += Double.parseDouble(mainDataResponseDto.getVelectric());
+				
+				switch (mainDataResponseDto.getUserid()) {
+				case "2016-018":
+					A1User.setUserid(mainDataResponseDto.getUserid());
+					A1User.setVcost(mainDataResponseDto.getVcost());
+					A1User.setVelectric(mainDataResponseDto.getVelectric());
+					A1User.setVleft(mainDataResponseDto.getVleft());
+					A1User.setVreservation(mainDataResponseDto.getVreservation());
+					break;
+				case "2017-182":
+					A2User.setUserid(mainDataResponseDto.getUserid());
+					A2User.setVcost(mainDataResponseDto.getVcost());
+					A2User.setVelectric(mainDataResponseDto.getVelectric());
+					A2User.setVleft(mainDataResponseDto.getVleft());
+					A2User.setVreservation(mainDataResponseDto.getVreservation());
+					break;
+				case "2017-027":
+					A3User.setUserid(mainDataResponseDto.getUserid());
+					A3User.setVcost(mainDataResponseDto.getVcost());
+					A3User.setVelectric(mainDataResponseDto.getVelectric());
+					A3User.setVleft(mainDataResponseDto.getVleft());
+					A3User.setVreservation(mainDataResponseDto.getVreservation());
+					break;
+				case "2016-035":
+					A4User.setUserid(mainDataResponseDto.getUserid());
+					A4User.setVcost(mainDataResponseDto.getVcost());
+					A4User.setVelectric(mainDataResponseDto.getVelectric());
+					A4User.setVleft(mainDataResponseDto.getVleft());
+					A4User.setVreservation(mainDataResponseDto.getVreservation());
+					break;
+				}
+
+			}else {
+				Bcost += Double.parseDouble(mainDataResponseDto.getVcost());
+				Belectric += Double.parseDouble(mainDataResponseDto.getVelectric());
+				switch (mainDataResponseDto.getUserid()) {
+				case "2018-223":
+					B1User.setUserid(mainDataResponseDto.getUserid());
+					B1User.setVcost(mainDataResponseDto.getVcost());
+					B1User.setVelectric(mainDataResponseDto.getVelectric());
+					B1User.setVleft(mainDataResponseDto.getVleft());
+					B1User.setVreservation(mainDataResponseDto.getVreservation());
+					break;
+				case "2016-129":
+					B2User.setUserid(mainDataResponseDto.getUserid());
+					B2User.setVcost(mainDataResponseDto.getVcost());
+					B2User.setVelectric(mainDataResponseDto.getVelectric());
+					B2User.setVleft(mainDataResponseDto.getVleft());
+					B2User.setVreservation(mainDataResponseDto.getVreservation());
+					break;
+				case "2018-429":
+					B3User.setUserid(mainDataResponseDto.getUserid());
+					B3User.setVcost(mainDataResponseDto.getVcost());
+					B3User.setVelectric(mainDataResponseDto.getVelectric());
+					B3User.setVleft(mainDataResponseDto.getVleft());
+					B3User.setVreservation(mainDataResponseDto.getVreservation());
+					break;
+				case "2016-341":
+					B4User.setUserid(mainDataResponseDto.getUserid());
+					B4User.setVcost(mainDataResponseDto.getVcost());
+					B4User.setVelectric(mainDataResponseDto.getVelectric());
+					B4User.setVleft(mainDataResponseDto.getVleft());
+					B4User.setVreservation(mainDataResponseDto.getVreservation());
+					break;
+				}
+				
+			}
+			
+		}
+		
+		model.addAttribute("A1User", A1User);
+		model.addAttribute("A2User", A2User);
+		model.addAttribute("A3User", A3User);
+		model.addAttribute("A4User", A4User);
+		
+		
+		model.addAttribute("Acost", String.valueOf(Acost));
+		model.addAttribute("Aelectric", String.valueOf(Aelectric));
+		
+		model.addAttribute("B1User", A1User);
+		model.addAttribute("B2User", A2User);
+		model.addAttribute("B3User", A3User);
+		model.addAttribute("B4User", A4User);
+		
+		model.addAttribute("Bcost", String.valueOf(Bcost));
+		model.addAttribute("Belectric", String.valueOf(Belectric));
+		
+		model.addAttribute("Allcost", String.valueOf(Allcost));
+		model.addAttribute("Allelectric", String.valueOf(Allelectric));
+		
+		
+		List<MainBateryResponseDto> mainBateryResponseDtoList = maindataService.getBateryDataTable(maindataSearchRequestDto);
+		
+		String A1data = "";
+		String A2data = "";
+		String A3data = "";
+		String A4data = "";
+		String B1data = "";
+		String B2data = "";
+		String B3data = "";
+		String B4data = "";
+		for(MainBateryResponseDto mainBateryResponseDto : mainBateryResponseDtoList) {
+			if(mainBateryResponseDto.getBuilding().equals("A")) {
+				
+				switch (mainBateryResponseDto.getFlag()) {
+				case "입력전압":
+					A1data = mainBateryResponseDto.getVdata();
+					break;
+				case "Batt충전용량":
+					A2data = mainBateryResponseDto.getVdata();
+					break;
+				case "Batt SOC":
+					A3data = mainBateryResponseDto.getVdata();
+					break;
+				case "출력전압":
+					A4data = mainBateryResponseDto.getVdata();
+					break;
+				}
+
+			}else {
+				switch (mainBateryResponseDto.getFlag()) {
+				case "입력전압":
+					B1data = mainBateryResponseDto.getVdata();
+					break;
+				case "Batt충전용량":
+					B2data = mainBateryResponseDto.getVdata();
+					break;
+				case "Batt SOC":
+					B3data = mainBateryResponseDto.getVdata();
+					break;
+				case "출력전압":
+					B4data = mainBateryResponseDto.getVdata();
+					break;
+				}
+				
+			}
+		}
+		
+		model.addAttribute("A1data", String.valueOf(A1data));
+		model.addAttribute("A2data", String.valueOf(A2data));
+		model.addAttribute("A3data", String.valueOf(A3data));
+		model.addAttribute("A4data", String.valueOf(A4data));
+		
+		model.addAttribute("Ahight", String.valueOf(Double.parseDouble(A3data) * 2));
+		
+		model.addAttribute("B1data", String.valueOf(B1data));
+		model.addAttribute("B2data", String.valueOf(B2data));
+		model.addAttribute("B3data", String.valueOf(B3data));
+		model.addAttribute("B4data", String.valueOf(B4data));
+		
+		model.addAttribute("Bhight", String.valueOf(Double.parseDouble(B3data) * 2));
+		
 		
     	return "main/apt";
     }

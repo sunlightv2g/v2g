@@ -18,5 +18,9 @@ public class MainDataResponseDto implements Serializable{
     private String carcnt;
     private String location;
     private String dayflag;
+    private String userid;
+    private String vleft;
+    private String vreservation;
+    private String building;
 
 }
