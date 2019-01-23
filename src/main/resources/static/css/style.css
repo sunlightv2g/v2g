@@ -30,7 +30,7 @@ img {line-height:0; font-size:0; border:0; max-width:100%; -ms-interpolation-mod
 .top > ul li {float:left;}
 .top > ul li a {display:block; width:80px; height:22px; color:#fff; font-size:14px; text-align: center; }
 .top > ul li:last-child {width:74px; height:24px; line-height: 24px; background:#0070cc; border:0;}
-.top > ul li input {display:block; width:40px ; height:22px; color:#000; font-size:12px; line-height:15px}
+.top > ul li input {display:block; height:22px; color:#000; font-size:12px; line-height:15px}
 
 .options {position: relative; height:55px; margin-bottom: 7px; clear:both;}
 .inputs {float:left; margin-top:9px}
